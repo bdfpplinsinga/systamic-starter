@@ -1,3 +1,4 @@
+name: bdfpplinsinga/systamic-starter
 export_paths:
   - content
   - config/filesystems.php
