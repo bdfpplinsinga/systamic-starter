@@ -1,0 +1,9 @@
+{
+    "name": "systamic/starter",
+    "extra": {
+        "statamic": {
+            "name": "Systamic Starter",
+            "description": "This is the starter for Systamic projects"
+        }
+    }
+}

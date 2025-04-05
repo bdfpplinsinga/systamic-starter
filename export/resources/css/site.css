@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "../views";
+@source "../../content";
+
+
+@layer components {
+    .hamburger {
+        /* === Configurable CSS Variables === */
+        --hamburger-size: 3rem;
+        --inner-size: 1.5rem;
+        --bar-width: 20px;
+        --bar-height: 1px;
+        --bar-color: var(--color-slate-800);
+        --bar-offset: 0.25em;
+        --bar-short-width: 10px;
+        --transition-speed: 0.5s;
+        --hover-translate: 150%;
+        --hover-offset: 4px;
+    
+        width: var(--hamburger-size);
+        height: var(--hamburger-size);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    
+        .hamburger__inner {
+          width: var(--inner-size);
+          height: var(--inner-size);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          overflow: hidden;
+    
+          .bar {
+            background-color: var(--bar-color);
+            width: var(--bar-width);
+            height: var(--bar-height);
+            position: absolute;
+            transition: all var(--transition-speed) ease;
+            transform: translate(0%, 0em) rotate(0.001deg);
+    
+            &:nth-child(1) {
+              transform: translate(0%, calc(-1 * var(--bar-offset))) rotate(0.001deg);
+            }
+    
+            &:nth-child(3) {
+              transform: translate(-50%, var(--bar-offset)) rotate(0.001deg);
+              width: var(--bar-short-width);
+    
+              &:before {
+                transform: translateX(-300%);
+              }
+            }
+    
+            &:before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: var(--bar-color);
+              transform: translateX(-150%);
+            }
+          }
+        }
+    
+        &:hover {
+          .hamburger__inner {
+            .bar {
+              transform: translateX(var(--hover-translate));
+              transition-delay: 0.05s;
+    
+              &:nth-child(1) {
+                transform: translate(var(--hover-translate), calc(-1 * var(--hover-offset))) rotate(0.001deg);
+                transition-delay: 0.1s;
+              }
+    
+              &:nth-child(3) {
+                transform: translate(calc(1.67 * var(--hover-translate)), var(--hover-offset)) rotate(0.001deg);
+                transition-delay: 0.2s;
+              }
+            }
+          }
+        }
+      }
+}
