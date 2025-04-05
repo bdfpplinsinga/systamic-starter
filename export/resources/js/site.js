@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Alpine from 'alpinejs';
 import barba from '@barba/core';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
