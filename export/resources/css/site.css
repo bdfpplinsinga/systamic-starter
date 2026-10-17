@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source "../views";
+@source "../../content";
+
+/*
+ * Design tokens. Pas deze per project aan; componenten gebruiken alleen
+ * deze tokens, nooit vaste kleuren of fonts.
+ */
+@theme {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-heading: var(--font-sans);
+
+    --color-primary: oklch(0.55 0.2 260);
+    --color-primary-contrast: oklch(1 0 0);
+    --color-secondary: oklch(0.96 0.02 260);
+    --color-secondary-contrast: oklch(0.25 0.05 260);
+    --color-surface: oklch(1 0 0);
+    --color-surface-muted: oklch(0.97 0 0);
+    --color-ink: oklch(0.22 0 0);
+    --color-ink-muted: oklch(0.45 0 0);
+
+    /* Accentkleur voor bovenkoppen en links. Een gekleurde <x-section> zet deze om naar een leesbare kleur. */
+    --color-accent: var(--color-primary);
+}
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+
+    body {
+        @apply bg-surface text-ink font-sans antialiased;
+    }
+}
+
+@utility prose-theme {
+    --tw-prose-body: currentColor;
+    --tw-prose-headings: currentColor;
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: currentColor;
+    --tw-prose-bullets: var(--color-ink-muted);
+    --tw-prose-quotes: currentColor;
+    --tw-prose-quote-borders: var(--color-accent);
+}

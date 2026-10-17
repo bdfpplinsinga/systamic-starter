@@ -1,0 +1,16 @@
+title: 'Blok - Media & tekst'
+fields:
+  -
+    import: content
+  -
+    import: image
+  -
+    handle: image_position
+    field:
+      type: button_group
+      display: 'Positie afbeelding'
+      options:
+        right: Rechts
+        left: Links
+      default: right
+      localizable: true

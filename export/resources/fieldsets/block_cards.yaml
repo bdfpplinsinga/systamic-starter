@@ -1,0 +1,32 @@
+title: 'Blok - Kaarten'
+fields:
+  -
+    import: content
+  -
+    handle: cards
+    field:
+      type: grid
+      display: Kaarten
+      mode: stacked
+      add_row: 'Kaart toevoegen'
+      localizable: true
+      fields:
+        -
+          import: image
+        -
+          handle: title
+          field:
+            type: text
+            display: Titel
+            validate:
+              - required
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Tekst
+        -
+          handle: link
+          field:
+            type: link
+            display: Link

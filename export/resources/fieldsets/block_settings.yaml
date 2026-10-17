@@ -1,0 +1,30 @@
+title: 'Groep - Blokinstellingen'
+fields:
+  -
+    handle: settings_section
+    field:
+      type: section
+      display: Instellingen
+  -
+    handle: background
+    field:
+      type: button_group
+      display: Achtergrond
+      options:
+        none: Geen
+        muted: Licht
+        primary: Primair
+      default: none
+      localizable: true
+      width: 50
+  -
+    handle: anchor
+    field:
+      type: text
+      display: Anker-ID
+      instructions: 'Maakt het blok bereikbaar via #anker-id. Alleen letters, cijfers en streepjes.'
+      validate:
+        - nullable
+        - alpha_dash
+      localizable: true
+      width: 50

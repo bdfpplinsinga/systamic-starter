@@ -1,0 +1,47 @@
+title: Pagina
+tabs:
+  main:
+    display: Inhoud
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Titel
+              required: true
+              localizable: true
+              validate:
+                - required
+          -
+            import: page_builder
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta description'
+              instructions: 'Wordt gebruikt als SEO Pro niet is geïnstalleerd.'
+              character_limit: 160
+              localizable: true
+              listable: false

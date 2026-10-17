@@ -1,0 +1,16 @@
+title: 'Groep - Content'
+fields:
+  -
+    handle: eyebrow
+    field:
+      type: text
+      display: Bovenkop
+      instructions: 'Korte regel boven de kop.'
+      localizable: true
+      listable: false
+  -
+    import: heading
+  -
+    import: text
+  -
+    import: buttons

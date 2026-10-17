@@ -1,0 +1,14 @@
+{{#
+    Opgemaakte tekst (Bard / Markdown output).
+    Props: size (sm|md|lg|xl), class
+#}}
+{{ size_class = switch(
+    (size == "sm") => "prose-sm",
+    (size == "lg") => "prose-lg",
+    (size == "xl") => "prose-xl",
+    ()             => ""
+) }}
+
+<div class="{{ ['prose prose-theme max-w-none', size_class, class] | tw_merge }}" {{ attributes:except(['size', 'class']) }}>
+    {{ slot }}
+</div>

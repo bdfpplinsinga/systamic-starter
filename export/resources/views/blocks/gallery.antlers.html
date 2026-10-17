@@ -1,0 +1,15 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        {{ if block:heading }}
+            <x-heading :as="block:heading_level" size="xl" class="mb-10">{{ block:heading }}</x-heading>
+        {{ /if }}
+
+        <ul class="grid grid-cols-2 gap-4 md:grid-cols-3">
+            {{ block:images }}
+                <li class="aspect-square overflow-hidden rounded-lg">
+                    <x-picture :image="url" cover sizes="(min-width: 768px) 33vw, 50vw" />
+                </li>
+            {{ /block:images }}
+        </ul>
+    </x-container>
+</x-section>

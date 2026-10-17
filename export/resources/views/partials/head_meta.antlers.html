@@ -1,0 +1,11 @@
+{{#
+    Meta tags. Met SEO Pro geïnstalleerd neemt die het over,
+    anders een eenvoudige fallback zodat de site altijd werkt.
+#}}
+{{ installed:statamic/seo-pro }}
+    {{ seo_pro:meta }}
+{{ /installed:statamic/seo-pro }}
+{{ unless {installed:statamic/seo-pro} }}
+    <title>{{ title ?? site:name | sanitize }}{{ unless is_homepage }} | {{ site:name }}{{ /unless }}</title>
+    {{ if meta_description }}<meta name="description" content="{{ meta_description | sanitize }}">{{ /if }}
+{{ /unless }}

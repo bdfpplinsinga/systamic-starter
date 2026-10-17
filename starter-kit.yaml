@@ -1,0 +1,35 @@
+export_paths:
+  - CLAUDE.md
+  - config/statamic/assets.php
+  - content/assets
+  - content/collections/pages.yaml
+  - content/collections/pages/home.md
+  - content/navigation
+  - content/trees
+  - resources/blueprints
+  - resources/css
+  - resources/fieldsets
+  - resources/js
+  - resources/svg
+  - resources/views
+  - routes/web.php
+  - package.json
+  - vite.config.js
+dependencies:
+  marcorieser/tailwind-merge-statamic: ^2.0
+modules:
+  seo:
+    prompt: 'SEO Pro installeren? (betaalde addon, voegt per pagina een SEO-tab toe)'
+    default: true
+    dependencies:
+      statamic/seo-pro: ^7.15
+  demo:
+    prompt: 'Demopagina met alle blokken en voorbeeldafbeeldingen installeren?'
+    default: false
+    export_paths:
+      - content/collections/pages/blokken.md
+      - public/assets/demo-1.jpg
+      - public/assets/demo-2.jpg
+      - public/assets/demo-3.jpg
+      - public/assets/demo-4.jpg
+      - public/assets/.meta

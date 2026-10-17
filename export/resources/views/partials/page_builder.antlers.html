@@ -1,0 +1,7 @@
+{{#
+    Rendert de page builder. Elk blok heeft een eigen view in
+    resources/views/blocks/{type}.antlers.html.
+#}}
+{{ page_builder scope="block" }}
+    {{ partial src="blocks/{block:type}" }}
+{{ /page_builder }}

@@ -1,0 +1,14 @@
+{{#
+    Gecentreerde content-breedte met vaste zijmarges.
+    Props: width (narrow|default|wide|full), class
+#}}
+{{ width_class = switch(
+    (width == "narrow") => "max-w-3xl",
+    (width == "wide")   => "max-w-screen-2xl",
+    (width == "full")   => "max-w-none",
+    ()                  => "max-w-7xl"
+) }}
+
+<div class="{{ ['mx-auto w-full px-6 lg:px-8', width_class, class] | tw_merge }}" {{ attributes:except(['width', 'class']) }}>
+    {{ slot }}
+</div>

@@ -1,0 +1,22 @@
+<x-section :background="block:background" :id="block:anchor" spacing="lg">
+    <x-container class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+            <x-content :block="block" size="xl" />
+
+            {{ if block:video_url }}
+                <x-modal label="Video">
+                    <x-slot:trigger>
+                        <x-button variant="link" class="mt-6"><x-icon name="play" variant="solid" size="sm" /> Bekijk video</x-button>
+                    </x-slot:trigger>
+                    <x-video :url="block:video_url" :title="block:heading" class="rounded-lg" />
+                </x-modal>
+            {{ /if }}
+        </div>
+
+        {{ if block:image }}
+            <div class="aspect-4/3 overflow-hidden rounded-2xl">
+                <x-picture :image="block:image" cover eager sizes="(min-width: 1024px) 50vw, 100vw" />
+            </div>
+        {{ /if }}
+    </x-container>
+</x-section>

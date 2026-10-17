@@ -1,0 +1,37 @@
+{{#
+    Button / link.
+    Props: href, variant (primary|secondary|ghost|link), size (sm|md|lg), type, target, class
+    Overige attributen (x-on:click, aria-*, data-*) worden doorgegeven.
+    Wordt een <a> als er een href is, anders een <button>.
+#}}
+{{ base = "group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50" }}
+
+{{ variant_class = switch(
+    (variant == "secondary") => "bg-secondary text-secondary-contrast hover:bg-secondary/80",
+    (variant == "ghost")     => "bg-transparent text-primary ring-1 ring-inset ring-primary hover:bg-primary hover:text-primary-contrast",
+    (variant == "link")      => "rounded-none bg-transparent p-0 text-primary underline decoration-transparent decoration-2 underline-offset-4 hover:decoration-current",
+    ()                       => "bg-primary text-primary-contrast hover:bg-primary/90"
+) }}
+
+{{ size_class = switch(
+    (variant == "link") => "",
+    (size == "sm")      => "px-4 py-2 text-sm",
+    (size == "lg")      => "px-8 py-4 text-lg",
+    ()                  => "px-6 py-3 text-base"
+) }}
+
+{{ classes = [base, size_class, variant_class, class] | tw_merge }}
+
+{{ if href }}
+    {{# Alleen http(s)-links naar een ander domein openen in een nieuw tabblad (dus niet mailto: of tel:). #}}
+    {{ external = (href | starts_with('http')) && (href | is_external_url) }}
+    <a
+        href="{{ href }}"
+        class="{{ classes }}"
+        {{ if target }}target="{{ target }}"{{ elseif external }}target="_blank"{{ /if }}
+        {{ if external }}rel="noopener noreferrer"{{ /if }}
+        {{ attributes:except(['href', 'variant', 'size', 'type', 'target', 'class']) }}
+    >{{ slot }}</a>
+{{ else }}
+    <button type="{{ type ?? 'button' }}" class="{{ classes }}" {{ attributes:except(['href', 'variant', 'size', 'type', 'target', 'class']) }}>{{ slot }}</button>
+{{ /if }}

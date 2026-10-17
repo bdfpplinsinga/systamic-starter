@@ -1,0 +1,36 @@
+{{#
+    Rendert de groep "content" (fieldset content.yaml): bovenkop, kop, tekst en buttons.
+    Props: block (bind de hele set: :block="block"), size (md|lg|xl), align (left|center), class
+    De grootte van de kop volgt uit size, het h-niveau uit de redacteur (heading_level).
+#}}
+{{ heading_size = switch(
+    (size == "xl") => "3xl",
+    (size == "lg") => "2xl",
+    ()             => "xl"
+) }}
+{{ prose_size = size == "xl" ? "lg" : "md" }}
+{{# Ternaries binnen een array-literal breken tw_merge; daarom eerst losse variabelen. #}}
+{{ align_class = align == "center" ? "mx-auto text-center" : "" }}
+{{ buttons_align = align == "center" ? "justify-center" : "" }}
+
+<div class="{{ ['max-w-2xl', align_class, class] | tw_merge }}" {{ attributes:except(['block', 'size', 'align', 'class']) }}>
+    {{ if block:eyebrow }}
+        <p class="mb-3 text-sm font-semibold tracking-wide text-accent uppercase">{{ block:eyebrow }}</p>
+    {{ /if }}
+
+    {{ if block:heading }}
+        <x-heading :as="block:heading_level" :size="heading_size">{{ block:heading }}</x-heading>
+    {{ /if }}
+
+    {{ if block:text }}
+        <x-prose :size="prose_size" class="mt-6">{{ block:text }}</x-prose>
+    {{ /if }}
+
+    {{ if block:buttons }}
+        <div class="{{ ['mt-8 flex flex-wrap items-center gap-4', buttons_align] | tw_merge }}">
+            {{ block:buttons }}
+                <x-button :href="link" :variant="variant">{{ label }}</x-button>
+            {{ /block:buttons }}
+        </div>
+    {{ /if }}
+</div>

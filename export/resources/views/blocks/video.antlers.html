@@ -1,0 +1,14 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container width="narrow">
+        {{ if block:heading }}
+            <x-heading :as="block:heading_level" size="xl" class="mb-8">{{ block:heading }}</x-heading>
+        {{ /if }}
+
+        <figure>
+            <x-video :url="block:video_url" :title="block:heading" class="rounded-2xl" />
+            {{ if block:caption }}
+                <figcaption class="mt-3 text-sm text-ink-muted">{{ block:caption }}</figcaption>
+            {{ /if }}
+        </figure>
+    </x-container>
+</x-section>

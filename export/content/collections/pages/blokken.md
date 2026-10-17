@@ -1,0 +1,16 @@
+---
+id: blokken
+blueprint: page
+title: Blokken
+page_builder:
+  - {id: b-hero, type: hero, enabled: true, eyebrow: 'Systamic', heading: 'Een snelle start voor elk project', heading_level: h1, text: [{type: paragraph, content: [{type: text, text: "Een korte alinea met uitleg over dit onderdeel."}]}], buttons: [{id: hb1, label: 'Aan de slag', variant: primary, link: '#contact'}, {id: hb2, label: 'Meer info', variant: secondary, link: '#faq'}], image: demo-1.jpg, video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', background: none}
+  - {id: b-text, type: text, enabled: true, width: narrow, text: [{type: heading, attrs: {level: 2}, content: [{type: text, text: 'Tekstblok'}]}, {type: paragraph, content: [{type: text, text: 'Lopende tekst in een smalle kolom. '}, {type: text, marks: [{type: bold}], text: 'Vetgedrukt'}, {type: text, text: ' en een lijst:'}]}, {type: bulletList, content: [{type: listItem, content: [{type: paragraph, content: [{type: text, text: 'Eerste punt'}]}]}, {type: listItem, content: [{type: paragraph, content: [{type: text, text: 'Tweede punt'}]}]}]}]}
+  - {id: b-mt1, type: media_text, enabled: true, eyebrow: 'Media & tekst', heading: 'Afbeelding rechts', heading_level: h2, text: [{type: paragraph, content: [{type: text, text: "Een korte alinea met uitleg over dit onderdeel."}]}], buttons: [{id: mb1, label: 'Lees meer', variant: link, link: '/'}], image: demo-2.jpg, image_position: right, background: muted}
+  - {id: b-mt2, type: media_text, enabled: true, heading: 'Afbeelding links', heading_level: h2, text: [{type: paragraph, content: [{type: text, text: "Een korte alinea met uitleg over dit onderdeel."}]}], image: demo-3.jpg, image_position: left}
+  - {id: b-cards, type: cards, enabled: true, heading: 'Kaarten', heading_level: h2, text: [{type: paragraph, content: [{type: text, text: "Een korte alinea met uitleg over dit onderdeel."}]}], cards: [{id: k1, image: demo-1.jpg, title: 'Eerste kaart', description: 'Korte omschrijving.', link: '/'}, {id: k2, image: demo-2.jpg, title: 'Tweede kaart', description: 'Korte omschrijving.', link: '/'}, {id: k3, title: 'Kaart zonder afbeelding', description: 'Ook dat kan.'}]}
+  - {id: b-gal, type: gallery, enabled: true, heading: 'Galerij', heading_level: h2, images: [demo-1.jpg, demo-2.jpg, demo-3.jpg, demo-4.jpg], background: muted}
+  - {id: b-img, type: image, enabled: true, image: demo-4.jpg, caption: 'Een bijschrift bij de afbeelding.'}
+  - {id: b-vid, type: video, enabled: true, heading: 'Video', heading_level: h2, video_url: 'https://vimeo.com/76979871', caption: 'Vimeo voorbeeld.'}
+  - {id: b-faq, type: faq, enabled: true, anchor: faq, heading: 'Veelgestelde vragen', heading_level: h2, items: [{id: f1, question: 'Hoe start ik een nieuw project?', answer: [{type: paragraph, content: [{type: text, text: "Een korte alinea met uitleg over dit onderdeel."}]}]}, {id: f2, question: 'Kan ik blokken aanpassen?', answer: [{type: paragraph, content: [{type: text, text: "Een korte alinea met uitleg over dit onderdeel."}]}]}]}
+  - {id: b-cta, type: call_to_action, enabled: true, anchor: contact, background: primary, eyebrow: 'Klaar?', heading: 'Start je volgende project', heading_level: h2, buttons: [{id: cb1, label: 'Contact', variant: secondary, link: 'mailto:info@example.com'}]}
+---

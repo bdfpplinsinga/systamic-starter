@@ -1,0 +1,15 @@
+title: 'Veld - Buttons'
+fields:
+  -
+    handle: buttons
+    field:
+      type: grid
+      display: Buttons
+      mode: stacked
+      max_rows: 3
+      add_row: 'Button toevoegen'
+      localizable: true
+      listable: false
+      fields:
+        -
+          import: button

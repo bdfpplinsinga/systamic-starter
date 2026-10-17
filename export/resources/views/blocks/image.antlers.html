@@ -1,0 +1,10 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <figure>
+            <x-picture :image="block:image" sizes="(min-width: 1280px) 1216px, 100vw" class="w-full rounded-2xl" />
+            {{ if block:caption }}
+                <figcaption class="mt-3 text-sm text-ink-muted">{{ block:caption }}</figcaption>
+            {{ /if }}
+        </figure>
+    </x-container>
+</x-section>

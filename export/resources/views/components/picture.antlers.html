@@ -1,0 +1,30 @@
+{{#
+    Responsive afbeelding met Glide (webp + origineel formaat).
+    Props: image (asset, bind met :image="image"), sizes, cover, eager (niet lazy laden, voor afbeeldingen boven de vouw), alt, class
+    Presets staan in config/statamic/assets.php.
+#}}
+{{ alt_override = alt }}
+{{ cover_class = cover ? 'h-full w-full object-cover' : '' }}
+{{ if image }}
+    {{ asset :url="image" }}
+        {{ alt_text = alt_override ?? alt ?? '' }}
+        {{ if extension == 'svg' || extension == 'gif' }}
+            <img class="{{ class }}" src="{{ url }}" alt="{{ alt_text }}" {{ unless eager }}loading="lazy"{{ /unless }}>
+        {{ else }}
+            <picture class="{{ cover ? 'block h-full w-full' : 'contents' }}">
+                <source type="image/webp" sizes="{{ sizes ?? '100vw' }}" srcset="{{ glide:url preset='sm-webp' }} 640w, {{ glide:url preset='md-webp' }} 1024w, {{ glide:url preset='lg-webp' }} 1536w, {{ glide:url preset='xl-webp' }} 2048w">
+                <img
+                    src="{{ glide:url preset='lg' }}"
+                    srcset="{{ glide:url preset='sm' }} 640w, {{ glide:url preset='md' }} 1024w, {{ glide:url preset='lg' }} 1536w, {{ glide:url preset='xl' }} 2048w"
+                    sizes="{{ sizes ?? '100vw' }}"
+                    width="{{ width }}"
+                    height="{{ height }}"
+                    alt="{{ alt_text }}"
+                    {{ unless eager }}loading="lazy"{{ /unless }}
+                    class="{{ [cover_class, class] | tw_merge }}"
+                    {{ if cover }}style="object-position: {{ focus | background_position }}"{{ /if }}
+                >
+            </picture>
+        {{ /if }}
+    {{ /asset }}
+{{ /if }}

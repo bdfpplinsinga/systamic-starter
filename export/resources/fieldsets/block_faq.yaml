@@ -1,0 +1,31 @@
+title: 'Blok - FAQ'
+fields:
+  -
+    import: content
+  -
+    handle: items
+    field:
+      type: grid
+      display: Vragen
+      mode: stacked
+      add_row: 'Vraag toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: question
+          field:
+            type: text
+            display: Vraag
+            validate:
+              - required
+        -
+          handle: answer
+          field:
+            type: bard
+            display: Antwoord
+            buttons:
+              - bold
+              - italic
+              - unorderedlist
+              - anchor
+            remove_empty_nodes: trim

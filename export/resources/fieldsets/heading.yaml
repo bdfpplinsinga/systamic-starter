@@ -1,0 +1,25 @@
+title: 'Veld - Heading'
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Kop
+      localizable: true
+      listable: false
+      width: 75
+  -
+    handle: heading_level
+    field:
+      type: select
+      display: Niveau
+      instructions: 'Alleen voor de structuur van de pagina, de grootte bepaalt het design.'
+      options:
+        h1: H1
+        h2: H2
+        h3: H3
+        h4: H4
+      default: h2
+      localizable: true
+      listable: false
+      width: 25

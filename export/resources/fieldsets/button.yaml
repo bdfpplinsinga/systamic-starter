@@ -1,0 +1,32 @@
+title: 'Veld - Button'
+fields:
+  -
+    handle: label
+    field:
+      type: text
+      display: Tekst
+      localizable: true
+      validate:
+        - required
+      width: 50
+  -
+    handle: variant
+    field:
+      type: button_group
+      display: Stijl
+      options:
+        primary: Primair
+        secondary: Secundair
+        ghost: Outline
+        link: Link
+      default: primary
+      localizable: true
+      width: 50
+  -
+    handle: link
+    field:
+      type: link
+      display: Link
+      localizable: true
+      validate:
+        - required

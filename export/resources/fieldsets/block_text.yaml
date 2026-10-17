@@ -1,0 +1,14 @@
+title: 'Blok - Tekst'
+fields:
+  -
+    import: text
+  -
+    handle: width
+    field:
+      type: button_group
+      display: Breedte
+      options:
+        narrow: Smal
+        wide: Breed
+      default: narrow
+      localizable: true

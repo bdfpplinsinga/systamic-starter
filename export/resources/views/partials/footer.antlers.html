@@ -1,0 +1,18 @@
+<footer class="border-t border-ink/10 bg-surface-muted">
+    <x-container class="flex flex-col gap-6 py-10 text-sm text-ink-muted md:flex-row md:items-center md:justify-between">
+        <p>&copy; {{ now format="Y" }} {{ site:name }}</p>
+
+        {{# "as" voorkomt dat een lege navigatie de huidige pagina toont. #}}
+        {{ nav:footer max_depth="1" as="links" }}
+            {{ if links }}
+                <nav aria-label="Footer">
+                    <ul class="flex flex-wrap gap-x-6 gap-y-2">
+                        {{ links }}
+                            <li><a href="{{ url }}" class="hover:text-ink">{{ title }}</a></li>
+                        {{ /links }}
+                    </ul>
+                </nav>
+            {{ /if }}
+        {{ /nav:footer }}
+    </x-container>
+</footer>

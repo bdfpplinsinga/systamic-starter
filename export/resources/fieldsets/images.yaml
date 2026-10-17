@@ -1,0 +1,11 @@
+title: 'Veld - Afbeeldingen'
+fields:
+  -
+    handle: images
+    field:
+      type: assets
+      display: Afbeeldingen
+      container: assets
+      mode: grid
+      localizable: true
+      listable: false

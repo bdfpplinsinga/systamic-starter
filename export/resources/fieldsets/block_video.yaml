@@ -1,0 +1,12 @@
+title: 'Blok - Video'
+fields:
+  -
+    import: heading
+  -
+    import: video
+  -
+    handle: caption
+    field:
+      type: text
+      display: Bijschrift
+      localizable: true

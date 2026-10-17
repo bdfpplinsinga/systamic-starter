@@ -1,0 +1,13 @@
+{{ image_order = block:image_position == 'left' ? 'lg:order-first' : '' }}
+
+<x-section :background="block:background" :id="block:anchor">
+    <x-container class="grid items-center gap-12 lg:grid-cols-2">
+        <x-content :block="block" />
+
+        {{ if block:image }}
+            <div class="{{ ['aspect-4/3 overflow-hidden rounded-2xl', image_order] | tw_merge }}">
+                <x-picture :image="block:image" cover sizes="(min-width: 1024px) 50vw, 100vw" />
+            </div>
+        {{ /if }}
+    </x-container>
+</x-section>

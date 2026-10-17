@@ -1,0 +1,10 @@
+title: 'Blok - Afbeelding'
+fields:
+  -
+    import: image
+  -
+    handle: caption
+    field:
+      type: text
+      display: Bijschrift
+      localizable: true

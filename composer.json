@@ -1,0 +1,12 @@
+{
+    "name": "bdfpplinsinga/systamic-starter",
+    "description": "Systamic: Statamic starter kit van Buro Toast",
+    "type": "statamic-starter-kit",
+    "license": "proprietary",
+    "extra": {
+        "statamic": {
+            "name": "Systamic",
+            "description": "Statamic starter kit met Antlers componenten, Tailwind 4, Alpine en een page builder"
+        }
+    }
+}

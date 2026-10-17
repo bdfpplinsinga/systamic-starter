@@ -1,0 +1,12 @@
+title: 'Veld - Afbeelding'
+fields:
+  -
+    handle: image
+    field:
+      type: assets
+      display: Afbeelding
+      container: assets
+      max_files: 1
+      mode: list
+      localizable: true
+      listable: false

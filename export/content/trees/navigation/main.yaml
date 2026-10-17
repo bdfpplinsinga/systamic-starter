@@ -1,0 +1,4 @@
+tree:
+  -
+    id: nav-home
+    entry: home

@@ -1,0 +1,96 @@
+{{# Overzicht van alle componenten. Alleen bereikbaar in de local omgeving (/styleguide). #}}
+{{ demo_image = 'assets::demo-1.jpg' }}
+
+<x-section>
+    <x-container class="space-y-16">
+        <div>
+            <x-heading as="h1" size="3xl">Styleguide</x-heading>
+            <p class="mt-2 text-ink-muted">Alle componenten uit resources/views/components.</p>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Headings</x-heading>
+            <x-heading as="p" size="display">Display</x-heading>
+            <x-heading as="p" size="3xl">3xl</x-heading>
+            <x-heading as="p" size="2xl">2xl</x-heading>
+            <x-heading as="p" size="xl">xl</x-heading>
+            <x-heading as="p" size="lg">lg</x-heading>
+            <x-heading as="p">md (default)</x-heading>
+            <x-heading as="p" size="sm" class="text-primary">sm met eigen kleur via class</x-heading>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Buttons</x-heading>
+            <div class="flex flex-wrap items-center gap-4">
+                <x-button>Primary</x-button>
+                <x-button variant="secondary">Secondary</x-button>
+                <x-button variant="ghost">Ghost</x-button>
+                <x-button variant="link" href="/">Link</x-button>
+                <x-button href="https://statamic.dev">Extern <x-icon name="arrow-up-right" size="sm" /></x-button>
+                <x-button size="sm">Small</x-button>
+                <x-button size="lg">Large</x-button>
+                <x-button class="rounded-md bg-ink">Override via tw_merge</x-button>
+                <x-button x-data x-on:click="$el.textContent = 'Geklikt'" aria-label="Attribuut test">Attributen doorgeven</x-button>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Icons</x-heading>
+            <div class="flex items-center gap-4">
+                <x-icon name="check" size="sm" />
+                <x-icon name="check" />
+                <x-icon name="check" size="lg" />
+                <x-icon name="check" size="xl" variant="solid" class="text-primary" />
+                <x-icon name="linkedin" variant="socials" label="LinkedIn" />
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Prose</x-heading>
+            <x-prose>
+                <h2>Tussenkop</h2>
+                <p>Lopende tekst met een <a href="#">link</a> en <strong>vetgedrukt</strong>.</p>
+                <ul><li>Eerste</li><li>Tweede</li></ul>
+            </x-prose>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Picture</x-heading>
+            <div class="grid gap-4 md:grid-cols-2">
+                <x-picture :image="demo_image" sizes="(min-width: 768px) 50vw, 100vw" class="rounded-lg" />
+                <div class="aspect-square overflow-hidden rounded-lg">
+                    <x-picture :image="demo_image" cover alt="Cover voorbeeld" />
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Content</x-heading>
+            {{ demo_content = [
+                'eyebrow' => 'Bovenkop',
+                'heading' => 'Kop uit de groep content',
+                'heading_level' => 'h3',
+                'text' => '<p>Tekst uit Bard. Alle blokken met de groep content gebruiken dit component.</p>'
+            ] }}
+            <x-content :block="demo_content" />
+            <p class="text-sm text-ink-muted">Alle blokken met echte content staan op <a href="/blokken" class="underline">/blokken</a>.</p>
+        </div>
+
+        <div class="space-y-4">
+            <x-heading size="lg">Modal + video</x-heading>
+            <x-modal label="Video">
+                <x-slot:trigger>
+                    <x-button variant="ghost"><x-icon name="play" size="sm" /> Bekijk video</x-button>
+                </x-slot:trigger>
+                <x-video url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="rounded-lg" />
+            </x-modal>
+        </div>
+    </x-container>
+</x-section>
+
+<x-section background="muted">
+    <x-container><p>Section met background="muted"</p></x-container>
+</x-section>
+<x-section background="primary" spacing="sm">
+    <x-container width="narrow"><p>Section met background="primary", spacing="sm" en een smalle container</p></x-container>
+</x-section>

@@ -1,0 +1,10 @@
+title: 'Veld - Video'
+fields:
+  -
+    handle: video_url
+    field:
+      type: video
+      display: Video
+      instructions: 'YouTube, Vimeo of een link naar een mp4.'
+      localizable: true
+      listable: false

@@ -1,0 +1,91 @@
+title: 'Page builder'
+fields:
+  -
+    handle: page_builder
+    field:
+      type: replicator
+      display: 'Page builder'
+      hide_display: true
+      button_label: 'Blok toevoegen'
+      collapse: true
+      localizable: true
+      listable: false
+      sets:
+        content:
+          display: Content
+          sets:
+            hero:
+              display: 'Hero'
+              instructions: 'Groot openingsblok met kop, tekst, buttons en afbeelding of video.'
+              fields:
+                -
+                  import: block_hero
+                -
+                  import: block_settings
+            text:
+              display: 'Tekst'
+              instructions: 'Lopende tekst.'
+              fields:
+                -
+                  import: block_text
+                -
+                  import: block_settings
+            media_text:
+              display: 'Media & tekst'
+              instructions: 'Content naast een afbeelding.'
+              fields:
+                -
+                  import: block_media_text
+                -
+                  import: block_settings
+            call_to_action:
+              display: 'Call to action'
+              instructions: 'Opvallend blok met kop en buttons.'
+              fields:
+                -
+                  import: block_cta
+                -
+                  import: block_settings
+            cards:
+              display: 'Kaarten'
+              instructions: 'Raster met kaarten.'
+              fields:
+                -
+                  import: block_cards
+                -
+                  import: block_settings
+            faq:
+              display: 'FAQ'
+              instructions: 'Vragen en antwoorden die uitklappen.'
+              fields:
+                -
+                  import: block_faq
+                -
+                  import: block_settings
+        media:
+          display: Media
+          sets:
+            image:
+              display: 'Afbeelding'
+              instructions: 'Eén afbeelding met bijschrift.'
+              fields:
+                -
+                  import: block_image
+                -
+                  import: block_settings
+            gallery:
+              display: 'Galerij'
+              instructions: 'Raster met afbeeldingen.'
+              fields:
+                -
+                  import: block_gallery
+                -
+                  import: block_settings
+            video:
+              display: 'Video'
+              instructions: 'YouTube, Vimeo of eigen video.'
+              fields:
+                -
+                  import: block_video
+                -
+                  import: block_settings

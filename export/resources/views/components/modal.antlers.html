@@ -1,0 +1,40 @@
+{{#
+    Modal met eigen trigger.
+
+    <x-modal label="Bekijk video">
+        <x-slot:trigger>
+            <x-button variant="ghost">Bekijk video</x-button>
+        </x-slot:trigger>
+        ...inhoud...
+    </x-modal>
+
+    Props: label (voor screenreaders), class
+#}}
+<div x-data="{ open: false }" class="contents">
+    <div x-on:click="open = true" class="contents">{{ trigger }}</div>
+
+    <template x-teleport="body">
+        <div
+            x-show="open"
+            x-cloak
+            x-on:keydown.escape.window="open = false"
+            x-trap.inert.noscroll="open"
+            role="dialog"
+            aria-modal="true"
+            aria-label="{{ label ?? 'Dialoog' }}"
+            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+        >
+            <div x-show="open" x-transition.opacity x-on:click="open = false" class="absolute inset-0 bg-black/70"></div>
+
+            <div x-show="open" x-transition class="{{ ['relative w-full max-w-4xl', class] | tw_merge }}">
+                <button type="button" x-on:click="open = false" class="absolute -top-10 right-0 text-white">
+                    <span class="sr-only">Sluiten</span>
+                    <x-icon name="x-mark" size="lg" />
+                </button>
+                <template x-if="open">
+                    <div>{{ slot }}</div>
+                </template>
+            </div>
+        </div>
+    </template>
+</div>

@@ -1,0 +1,17 @@
+{{#
+    SVG icoon uit resources/svg/icons/{variant}/{name}.svg (Heroicons 24px).
+    Props: name, variant (outline|solid|socials), size (sm|md|lg|xl), label, class
+    Zonder label is het icoon decoratief (aria-hidden).
+#}}
+{{ size_class = switch(
+    (size == "sm") => "size-4",
+    (size == "lg") => "size-6",
+    (size == "xl") => "size-8",
+    ()             => "size-5"
+) }}
+
+{{ if label }}
+    {{ svg :src="'icons/' + (variant ?? 'outline') + '/' + name" class="{{ ['shrink-0', size_class, class] | tw_merge }}" role="img" :aria-label="label" aria-hidden="false" }}
+{{ else }}
+    {{ svg :src="'icons/' + (variant ?? 'outline') + '/' + name" class="{{ ['shrink-0', size_class, class] | tw_merge }}" aria-hidden="true" }}
+{{ /if }}

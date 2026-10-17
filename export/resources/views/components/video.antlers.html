@@ -1,0 +1,18 @@
+{{#
+    Video: YouTube/Vimeo als iframe, andere URL's als <video>.
+    Props: url, title, class
+#}}
+{{ if url }}
+    {{ if url | is_embeddable }}
+        <iframe
+            class="{{ ['aspect-video w-full', class] | tw_merge }}"
+            src="{{ url | embed_url }}"
+            title="{{ title ?? 'Video' }}"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    {{ else }}
+        <video class="{{ ['aspect-video w-full', class] | tw_merge }}" src="{{ url }}" controls preload="metadata"></video>
+    {{ /if }}
+{{ /if }}

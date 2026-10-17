@@ -1,0 +1,22 @@
+title: 'Veld - Tekst'
+fields:
+  -
+    handle: text
+    field:
+      type: bard
+      display: Tekst
+      buttons:
+        - h2
+        - h3
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - quote
+        - anchor
+        - removeformat
+      link_noopener: true
+      remove_empty_nodes: trim
+      smart_typography: true
+      localizable: true
+      listable: false

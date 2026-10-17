@@ -1,0 +1,29 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container width="narrow">
+        <x-content :block="block" />
+
+        <dl class="mt-10 divide-y divide-ink/10 border-y border-ink/10">
+            {{ block:items }}
+                <div x-data="{ open: false }" class="py-5">
+                    <dt>
+                        <button
+                            type="button"
+                            x-on:click="open = !open"
+                            x-bind:aria-expanded="open"
+                            aria-controls="faq-{{ block:id }}-{{ index }}"
+                            class="flex w-full items-center justify-between gap-6 text-left font-semibold"
+                        >
+                            {{ question }}
+                            <span class="transition-transform duration-200" x-bind:class="open && 'rotate-180'">
+                                <x-icon name="chevron-down" />
+                            </span>
+                        </button>
+                    </dt>
+                    <dd id="faq-{{ block:id }}-{{ index }}" x-show="open" x-collapse x-cloak>
+                        <x-prose class="pt-4">{{ answer }}</x-prose>
+                    </dd>
+                </div>
+            {{ /block:items }}
+        </dl>
+    </x-container>
+</x-section>

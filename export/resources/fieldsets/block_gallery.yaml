@@ -1,0 +1,6 @@
+title: 'Blok - Galerij'
+fields:
+  -
+    import: heading
+  -
+    import: images

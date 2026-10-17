@@ -1,0 +1,8 @@
+title: 'Blok - Hero'
+fields:
+  -
+    import: content
+  -
+    import: image
+  -
+    import: video
