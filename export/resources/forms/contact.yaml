@@ -1,0 +1,9 @@
+title: Contact
+honeypot: website
+store: true
+email:
+  -
+    to: '{{ company:email ?? config:mail:from:address }}'
+    reply_to: '{{ email }}'
+    subject: 'Nieuw bericht via het contactformulier'
+    html: emails/form_submission

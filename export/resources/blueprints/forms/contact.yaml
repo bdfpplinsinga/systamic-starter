@@ -1,0 +1,55 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Naam
+              autocomplete: name
+              validate:
+                - required
+              width: 50
+          -
+            handle: email
+            field:
+              type: text
+              input_type: email
+              display: E-mailadres
+              autocomplete: email
+              validate:
+                - required
+                - email
+              width: 50
+          -
+            handle: phone
+            field:
+              type: text
+              input_type: tel
+              display: Telefoonnummer
+              autocomplete: tel
+              width: 50
+          -
+            handle: subject
+            field:
+              type: text
+              display: Onderwerp
+              width: 50
+          -
+            handle: message
+            field:
+              type: textarea
+              display: Bericht
+              validate:
+                - required
+          -
+            handle: privacy
+            field:
+              type: toggle
+              display: Privacy
+              inline_label: 'Ik ga akkoord met de verwerking van mijn gegevens volgens de privacyverklaring.'
+              validate:
+                - accepted

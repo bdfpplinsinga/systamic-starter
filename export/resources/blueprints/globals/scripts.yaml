@@ -1,0 +1,54 @@
+title: Scripts
+tabs:
+  main:
+    display: Scripts
+    sections:
+      -
+        instructions: 'Scripts van derden, zoals Google Tag Manager of een chatwidget. Ze worden pas geladen als de bezoeker de bijbehorende cookiecategorie accepteert.'
+        fields:
+          -
+            handle: scripts
+            field:
+              type: grid
+              display: Scripts
+              mode: stacked
+              add_row: 'Script toevoegen'
+              fields:
+                -
+                  handle: name
+                  field:
+                    type: text
+                    display: Naam
+                    width: 33
+                    validate:
+                      - required
+                -
+                  handle: cookie_group
+                  field:
+                    type: select
+                    display: Cookiecategorie
+                    instructions: 'Moet overeenkomen met een groep in Tools > Cookie Dialog.'
+                    width: 33
+                    default: statistics
+                    options:
+                      essential: 'Noodzakelijk (altijd laden)'
+                      statistics: Statistieken
+                      marketing: Marketing
+                -
+                  handle: position
+                  field:
+                    type: button_group
+                    display: Plaats
+                    width: 33
+                    default: head
+                    options:
+                      head: '<head>'
+                      body: 'Einde <body>'
+                -
+                  handle: code
+                  field:
+                    type: code
+                    display: Code
+                    mode: htmlmixed
+                    validate:
+                      - required

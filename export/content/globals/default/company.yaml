@@ -1,0 +1,8 @@
+company_name: 'Bedrijfsnaam'
+organization_type: Organization
+email: info@example.com
+phone: '+31 (0)20 123 45 67'
+street: 'Voorbeeldstraat 1'
+postal_code: '1234 AB'
+city: Amsterdam
+country: Nederland

@@ -62,6 +62,22 @@ fields:
                   import: block_faq
                 -
                   import: block_settings
+            testimonials:
+              display: 'Testimonials'
+              instructions: 'Citaten van klanten.'
+              fields:
+                -
+                  import: block_testimonials
+                -
+                  import: block_settings
+            team:
+              display: 'Team'
+              instructions: 'Raster met teamleden.'
+              fields:
+                -
+                  import: block_team
+                -
+                  import: block_settings
         media:
           display: Media
           sets:
@@ -87,5 +103,32 @@ fields:
               fields:
                 -
                   import: block_video
+                -
+                  import: block_settings
+            logos:
+              display: 'Logo''s'
+              instructions: 'Rij met logo''s van klanten of partners.'
+              fields:
+                -
+                  import: block_logos
+                -
+                  import: block_settings
+        dynamic:
+          display: 'Formulieren & overzichten'
+          sets:
+            form:
+              display: 'Formulier'
+              instructions: 'Een formulier, bijvoorbeeld het contactformulier.'
+              fields:
+                -
+                  import: block_form
+                -
+                  import: block_settings
+            latest_entries:
+              display: 'Laatste berichten'
+              instructions: 'De nieuwste entries uit een collectie, zoals nieuws.'
+              fields:
+                -
+                  import: block_latest_entries
                 -
                   import: block_settings

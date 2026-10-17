@@ -4,18 +4,39 @@ export_paths:
   - content/assets
   - content/collections/pages.yaml
   - content/collections/pages/home.md
+  - content/collections/pages/contact.md
+  - content/collections/pages/privacyverklaring.md
+  - content/collections/pages/algemene-voorwaarden.md
+  - content/cookie-dialog
+  - content/globals
   - content/navigation
   - content/trees
-  - resources/blueprints
+  - lang
+  - resources/blueprints/assets
+  - resources/blueprints/collections/pages
+  - resources/blueprints/forms
+  - resources/blueprints/globals
+  - resources/blueprints/default.yaml
+  - resources/blueprints/user.yaml
   - resources/css
   - resources/fieldsets
+  - resources/forms
   - resources/js
+  - resources/sites.yaml
   - resources/svg
-  - resources/views
+  - resources/views/blocks
+  - resources/views/components
+  - resources/views/emails
+  - resources/views/errors
+  - resources/views/partials
+  - resources/views/default.antlers.html
+  - resources/views/layout.antlers.html
+  - resources/views/styleguide.antlers.html
   - routes/web.php
   - package.json
   - vite.config.js
 dependencies:
+  emplify-software/statamic-cookie-dialog: ^3.0
   marcorieser/tailwind-merge-statamic: ^2.0
 modules:
   seo:
@@ -23,6 +44,15 @@ modules:
     default: true
     dependencies:
       statamic/seo-pro: ^7.15
+  news:
+    prompt: 'Nieuws installeren? (collectie op /nieuws met overzicht en berichtpagina)'
+    default: false
+    export_paths:
+      - content/collections/news.yaml
+      - content/collections/news
+      - content/collections/pages/nieuws.md
+      - resources/blueprints/collections/news
+      - resources/views/news
   demo:
     prompt: 'Demopagina met alle blokken en voorbeeldafbeeldingen installeren?'
     default: false
@@ -32,4 +62,8 @@ modules:
       - public/assets/demo-2.jpg
       - public/assets/demo-3.jpg
       - public/assets/demo-4.jpg
+      - public/assets/demo-logo-1.svg
+      - public/assets/demo-logo-2.svg
+      - public/assets/demo-logo-3.svg
+      - public/assets/demo-logo-4.svg
       - public/assets/.meta

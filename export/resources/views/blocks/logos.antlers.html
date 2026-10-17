@@ -1,0 +1,19 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        {{ if block:heading }}
+            <x-heading :as="block:heading_level" size="sm" class="text-center text-ink-muted">{{ block:heading }}</x-heading>
+        {{ /if }}
+
+        <ul class="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+            {{ block:logos }}
+                <li>
+                    {{ if link }}<a href="{{ link }}" class="block">{{ /if }}
+                        {{ image }}
+                            <img src="{{ url }}" alt="{{ name }}" class="h-10 w-auto max-w-40 object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0" loading="lazy" {{ if width }}width="{{ width }}" height="{{ height }}"{{ /if }}>
+                        {{ /image }}
+                    {{ if link }}</a>{{ /if }}
+                </li>
+            {{ /block:logos }}
+        </ul>
+    </x-container>
+</x-section>

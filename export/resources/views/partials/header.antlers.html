@@ -1,14 +1,24 @@
 <header x-data="{ open: false }" class="relative z-40 border-b border-ink/10 bg-surface">
-    <x-container class="flex items-center justify-between py-5">
-        <a href="/" class="font-heading text-lg font-bold">{{ site:name }}</a>
+    <x-container class="flex items-center justify-between gap-8 py-5">
+        {{ partial:logo }}
 
-        <nav aria-label="Hoofdmenu" class="hidden lg:block">
-            <ul class="flex gap-x-8">
-                {{ nav:main max_depth="1" as="links" }}{{ links }}
-                    <li><a href="{{ url }}" class="text-sm font-semibold {{ is_current || is_parent ? 'text-primary' : 'text-ink hover:text-primary' }}" {{ if is_current }}aria-current="page"{{ /if }}>{{ title }}</a></li>
-                {{ /links }}{{ /nav:main }}
-            </ul>
-        </nav>
+        <div class="hidden items-center gap-8 lg:flex">
+            <nav aria-label="Hoofdmenu">
+                <ul class="flex gap-x-8">
+                    {{ nav:main max_depth="1" as="links" }}{{ links }}
+                        <li><a href="{{ url }}" class="text-sm font-semibold {{ is_current || is_parent ? 'text-accent' : 'text-ink hover:text-accent' }}" {{ if is_current }}aria-current="page"{{ /if }}>{{ title }}</a></li>
+                    {{ /links }}{{ /nav:main }}
+                </ul>
+            </nav>
+
+            {{ if site:buttons }}
+                <div class="flex items-center gap-3">
+                    {{ site:buttons }}
+                        <x-button :href="link" :variant="variant" size="sm">{{ label }}</x-button>
+                    {{ /site:buttons }}
+                </div>
+            {{ /if }}
+        </div>
 
         <button type="button" x-on:click="open = !open" x-bind:aria-expanded="open" aria-controls="mobile-menu" class="-m-2 p-2 lg:hidden">
             <span class="sr-only">Menu</span>
@@ -18,12 +28,19 @@
     </x-container>
 
     <nav id="mobile-menu" aria-label="Mobiel menu" x-show="open" x-collapse x-cloak class="border-t border-ink/10 lg:hidden">
-        <x-container class="py-4">
+        <x-container class="space-y-4 py-4">
             <ul class="space-y-1">
                 {{ nav:main max_depth="1" as="links" }}{{ links }}
                     <li><a href="{{ url }}" class="block rounded-lg px-3 py-2 font-semibold hover:bg-surface-muted">{{ title }}</a></li>
                 {{ /links }}{{ /nav:main }}
             </ul>
+            {{ if site:buttons }}
+                <div class="flex flex-wrap gap-3 px-3">
+                    {{ site:buttons }}
+                        <x-button :href="link" :variant="variant" size="sm">{{ label }}</x-button>
+                    {{ /site:buttons }}
+                </div>
+            {{ /if }}
         </x-container>
     </nav>
 </header>

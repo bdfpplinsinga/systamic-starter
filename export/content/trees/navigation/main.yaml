@@ -2,3 +2,6 @@ tree:
   -
     id: nav-home
     entry: home
+  -
+    id: nav-contact
+    entry: contact

@@ -1,0 +1,9 @@
+title: Nieuws
+route: '/nieuws/{slug}'
+date: true
+date_behavior:
+  past: public
+  future: private
+sort_dir: desc
+template: news/show
+layout: layout

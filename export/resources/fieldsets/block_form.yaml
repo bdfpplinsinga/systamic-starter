@@ -1,0 +1,18 @@
+title: 'Blok - Formulier'
+fields:
+  -
+    import: content
+  -
+    handle: form
+    field:
+      type: form
+      display: Formulier
+      max_items: 1
+      validate:
+        - required
+  -
+    handle: success_message
+    field:
+      type: text
+      display: Bedankmelding
+      default: 'Bedankt voor je bericht. We nemen zo snel mogelijk contact met je op.'

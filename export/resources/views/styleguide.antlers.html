@@ -77,6 +77,15 @@
         </div>
 
         <div class="space-y-4">
+            <x-heading size="lg">Social links, kruimelpad en entry-kaart</x-heading>
+            <x-social-links :links="social:social_links" />
+            <x-breadcrumbs />
+            {{ asset src="assets::demo-1.jpg" as="demo_image" }}
+                <x-entry-card url="#" title="Titel van een bericht" :date="now" :image="demo_image" excerpt="Korte samenvatting uit het veld excerpt." class="max-w-sm" />
+            {{ /asset }}
+        </div>
+
+        <div class="space-y-4">
             <x-heading size="lg">Modal + video</x-heading>
             <x-modal label="Video">
                 <x-slot:trigger>

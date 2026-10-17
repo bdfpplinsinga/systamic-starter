@@ -1,0 +1,16 @@
+{{#
+    Scripts uit de global "Scripts". Param: at (head|body).
+    Alles behalve "Noodzakelijk" wacht op toestemming via Cookie Dialog.
+#}}
+{{ target = at }}
+{{ nocache }}
+{{ scripts:scripts }}
+    {{ if position:value == target }}
+        {{ if cookie_group:value == 'essential' }}
+            {{ code }}
+        {{ else }}
+            {{ cookie:allowed :group="cookie_group:value" }}{{ code }}{{ /cookie:allowed }}
+        {{ /if }}
+    {{ /if }}
+{{ /scripts:scripts }}
+{{ /nocache }}

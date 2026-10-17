@@ -1,0 +1,9 @@
+social_links:
+  -
+    id: s-linkedin
+    platform: linkedin
+    url: 'https://www.linkedin.com'
+  -
+    id: s-instagram
+    platform: instagram
+    url: 'https://www.instagram.com'

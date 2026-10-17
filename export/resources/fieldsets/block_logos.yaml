@@ -1,0 +1,35 @@
+title: 'Blok - Logo''s'
+fields:
+  -
+    import: heading
+  -
+    handle: logos
+    field:
+      type: grid
+      display: "Logo's"
+      mode: table
+      add_row: 'Logo toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: image
+          field:
+            type: assets
+            display: Logo
+            container: assets
+            max_files: 1
+            validate:
+              - required
+        -
+          handle: name
+          field:
+            type: text
+            display: Naam
+            instructions: 'Wordt gebruikt als alt-tekst.'
+            validate:
+              - required
+        -
+          handle: link
+          field:
+            type: link
+            display: Link

@@ -1,11 +1,36 @@
 {{#
-    Meta tags. Met SEO Pro geïnstalleerd neemt die het over,
-    anders een eenvoudige fallback zodat de site altijd werkt.
+    Meta tags, favicon, gestructureerde data en scripts voor in <head>.
+    Met SEO Pro geïnstalleerd verzorgt die titel, description en social sharing,
+    anders een eenvoudige fallback op basis van de pagina en de global "Algemeen".
 #}}
 {{ installed:statamic/seo-pro }}
     {{ seo_pro:meta }}
 {{ /installed:statamic/seo-pro }}
 {{ unless {installed:statamic/seo-pro} }}
-    <title>{{ title ?? site:name | sanitize }}{{ unless is_homepage }} | {{ site:name }}{{ /unless }}</title>
+    {{ page_title = is_homepage ? site:name : title + ' | ' + site:name }}
+    <title>{{ page_title | sanitize }}</title>
     {{ if meta_description }}<meta name="description" content="{{ meta_description | sanitize }}">{{ /if }}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page_title | sanitize }}">
+    <meta property="og:url" content="{{ permalink }}">
+    {{ if meta_description }}<meta property="og:description" content="{{ meta_description | sanitize }}">{{ /if }}
+    {{ share = image ?? site:share_image }}
+    {{ if share }}
+        {{ asset :url="share" }}<meta property="og:image" content="{{ glide:url preset='lg' absolute="true" }}">{{ /asset }}
+    {{ /if }}
+    <link rel="canonical" href="{{ permalink }}">
 {{ /unless }}
+
+{{ if site:favicon }}
+    {{ asset :url="site:favicon" }}
+        {{ if extension == 'svg' }}
+            <link rel="icon" href="{{ url }}" type="image/svg+xml">
+        {{ else }}
+            <link rel="icon" href="{{ glide:url w='32' h='32' fit='crop' fm='png' }}" sizes="32x32" type="image/png">
+        {{ /if }}
+        <link rel="apple-touch-icon" href="{{ glide:url w='180' h='180' fit='crop' fm='png' }}">
+    {{ /asset }}
+{{ /if }}
+
+{{ partial:structured_data }}
+{{ partial:scripts at="head" }}

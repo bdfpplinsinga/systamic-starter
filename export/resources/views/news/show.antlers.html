@@ -1,0 +1,38 @@
+<x-container class="pt-6">
+    <x-breadcrumbs />
+</x-container>
+
+<article>
+    <x-section spacing="sm">
+        <x-container width="narrow">
+            <time datetime="{{ date | format('Y-m-d') }}" class="text-sm text-ink-muted">{{ date | iso_format('D MMMM YYYY') }}</time>
+            <x-heading as="h1" size="3xl" class="mt-2">{{ title }}</x-heading>
+            {{ if excerpt }}
+                <p class="mt-6 text-xl text-ink-muted">{{ excerpt }}</p>
+            {{ /if }}
+        </x-container>
+        {{ if image }}
+            <x-container class="mt-10">
+                <div class="aspect-video overflow-hidden rounded-2xl">
+                    <x-picture :image="image" cover eager sizes="(min-width: 1280px) 1280px, 100vw" />
+                </div>
+            </x-container>
+        {{ /if }}
+    </x-section>
+
+    {{ partial:page_builder }}
+</article>
+
+{{ push:head }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": {{ title | to_json }},
+    "datePublished": {{ date | format('c') | to_json }},
+    "dateModified": {{ last_modified | format('c') | to_json }}{{ if image }},
+    "image": [{{ image }}{{ glide:url preset="lg" absolute="true" | to_json }}{{ /image }}]{{ /if }},
+    "publisher": { "@type": "Organization", "name": {{ (company:company_name ?? site:name) | to_json }} }
+}
+</script>
+{{ /push:head }}

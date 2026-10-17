@@ -1,0 +1,15 @@
+<p>Er is een nieuw formulier ingevuld op {{ config:app:url }}.</p>
+<table cellpadding="6" cellspacing="0">
+    {{ fields }}
+        {{ if value }}
+            <tr>
+                <th align="left" valign="top">{{ display }}</th>
+                <td>
+                    {{ if fieldtype == 'toggle' }}Ja
+                    {{ elseif value | is_array }}{{ value | join(', ') }}
+                    {{ else }}{{ value | nl2br }}{{ /if }}
+                </td>
+            </tr>
+        {{ /if }}
+    {{ /fields }}
+</table>

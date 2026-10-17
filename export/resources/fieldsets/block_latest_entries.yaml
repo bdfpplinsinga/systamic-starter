@@ -1,0 +1,22 @@
+title: 'Blok - Laatste berichten'
+fields:
+  -
+    import: content
+  -
+    handle: collection
+    field:
+      type: collections
+      display: Collectie
+      instructions: 'Bijvoorbeeld Nieuws.'
+      max_items: 1
+      mode: select
+      width: 50
+      validate:
+        - required
+  -
+    handle: limit
+    field:
+      type: integer
+      display: Aantal
+      default: 3
+      width: 50

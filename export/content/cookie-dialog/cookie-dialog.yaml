@@ -1,0 +1,72 @@
+enabled: true
+button_enabled: false
+groups:
+  -
+    identifier: essential
+    name: 'Noodzakelijke cookies'
+    description: 'Nodig om de website goed te laten werken, bijvoorbeeld om je cookievoorkeuren te onthouden.'
+    required: true
+    enabled_default: true
+    cookies:
+      -
+        cookie_identifier: cookie_preferences
+        cookie_name: Cookievoorkeuren
+        cookie_description: 'Onthoudt welke cookies je hebt geaccepteerd.'
+        cookie_lifetime: '1 jaar'
+        _id: ess01
+        type: cookie
+        enabled: true
+    _id: grpess
+    type: cookie-group
+    enabled: true
+  -
+    identifier: statistics
+    name: Statistieken
+    description: 'Helpen ons te begrijpen hoe bezoekers de website gebruiken, zodat we hem kunnen verbeteren.'
+    required: false
+    enabled_default: false
+    cookies:
+      -
+        cookie_identifier: analytics
+        cookie_name: Analytics
+        cookie_description: 'Anonieme bezoekersstatistieken.'
+        cookie_lifetime: '2 jaar'
+        _id: sta01
+        type: cookie
+        enabled: true
+    _id: grpsta
+    type: cookie-group
+    enabled: true
+  -
+    identifier: marketing
+    name: Marketing
+    description: 'Worden gebruikt om advertenties relevanter te maken en de effectiviteit van campagnes te meten.'
+    required: false
+    enabled_default: false
+    cookies:
+      -
+        cookie_identifier: advertising
+        cookie_name: Advertenties
+        cookie_description: 'Cookies van advertentiepartners.'
+        cookie_lifetime: '1 jaar'
+        _id: mar01
+        type: cookie
+        enabled: true
+    _id: grpmar
+    type: cookie-group
+    enabled: true
+heading: 'Wij gebruiken cookies'
+description: 'We gebruiken cookies om de website goed te laten werken en om te begrijpen hoe hij wordt gebruikt. Je kunt zelf kiezen welke cookies je accepteert en je keuze later altijd aanpassen via "Cookie-instellingen" onderaan de pagina.'
+accept_all: 'Alles accepteren'
+info_pages:
+  privacy_policy_link: /privacyverklaring
+  privacy_policy_title: Privacyverklaring
+  imprint_link: /algemene-voorwaarden
+  imprint_title: 'Algemene voorwaarden'
+cookie_details: Cookies
+save_preferences: 'Voorkeuren opslaan'
+dark_light_mode: light
+highlight_color: '#2f5fd0'
+highlight_color_dark: '#599dff'
+button_position: bottom_left
+button_text: Cookies

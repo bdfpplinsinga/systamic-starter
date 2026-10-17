@@ -1,0 +1,27 @@
+{{#
+    JSON-LD voor zoekmachines op basis van de global "Bedrijfsgegevens" en "Social media".
+    Alleen op de homepage, zodat het één keer per site staat.
+#}}
+{{ if is_homepage && company:company_name }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": {{ (company:organization_type:value ?? 'Organization') | to_json }},
+    "name": {{ company:company_name | to_json }},
+    {{ if company:legal_name }}"legalName": {{ company:legal_name | to_json }},{{ /if }}
+    {{ if company:email }}"email": {{ company:email | to_json }},{{ /if }}
+    {{ if company:phone }}"telephone": {{ company:phone | to_json }},{{ /if }}
+    {{ if company:vat_number }}"vatID": {{ company:vat_number | to_json }},{{ /if }}
+    {{ if site:logo }}"logo": {{ site:logo:permalink | to_json }},{{ /if }}
+    {{ if company:street }}"address": {
+        "@type": "PostalAddress",
+        "streetAddress": {{ company:street | to_json }},
+        "postalCode": {{ company:postal_code | to_json }},
+        "addressLocality": {{ company:city | to_json }},
+        "addressCountry": {{ company:country | to_json }}
+    },{{ /if }}
+    "sameAs": {{ social:social_links | pluck('url') | to_json }},
+    "url": {{ config:app:url | to_json }}
+}
+</script>
+{{ /if }}

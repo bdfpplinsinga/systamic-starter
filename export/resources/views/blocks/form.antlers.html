@@ -1,0 +1,55 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container width="narrow">
+        <x-content :block="block" />
+
+        {{# nocache houdt fouten en de bedankmelding werkend als static caching aan staat. #}}
+        {{ nocache }}
+            {{ form:create :in="block:form:handle" class="form-theme mt-10" }}
+                {{ if success }}
+                    <div role="status" class="rounded-lg bg-success/10 p-4 font-semibold text-success">
+                        {{ block:success_message ?? 'Bedankt voor je bericht.' }}
+                    </div>
+                {{ else }}
+                    {{ if errors }}
+                        <div role="alert" class="mb-6 rounded-lg bg-danger/10 p-4 text-danger">
+                            Controleer de gemarkeerde velden.
+                        </div>
+                    {{ /if }}
+
+                    <div class="grid gap-6 sm:grid-cols-2">
+                        {{ fields }}
+                            {{ span = width && width <= 50 ? 'sm:col-span-1' : 'sm:col-span-2' }}
+                            <div class="{{ span }}">
+                                {{# Een toggle heeft zijn eigen inline label. #}}
+                                {{ if type == 'toggle' }}
+                                {{ elseif type == 'checkboxes' || type == 'radio' }}
+                                    <p class="mb-2 font-semibold">{{ display }}</p>
+                                {{ else }}
+                                    <label for="{{ id }}" class="font-semibold">
+                                        {{ display }}{{ if validate | contains('required') }} <span class="text-danger">*</span>{{ /if }}
+                                    </label>
+                                {{ /if }}
+
+                                {{ field }}
+
+                                {{ if instructions }}
+                                    <p id="{{ id }}-instructions" class="mt-2 text-sm text-ink-muted">{{ instructions }}</p>
+                                {{ /if }}
+                                {{ if error }}
+                                    <p id="{{ id }}-error" class="mt-2 text-sm text-danger">{{ error }}</p>
+                                {{ /if }}
+                            </div>
+                        {{ /fields }}
+                    </div>
+
+                    {{# Honeypot: onzichtbaar voor mensen, spambots vullen hem in. #}}
+                    <div class="hidden" aria-hidden="true">
+                        <input type="text" name="{{ honeypot ?? 'honeypot' }}" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <x-button type="submit" class="mt-8">Versturen</x-button>
+                {{ /if }}
+            {{ /form:create }}
+        {{ /nocache }}
+    </x-container>
+</x-section>

@@ -1,0 +1,48 @@
+title: 'Blok - Team'
+fields:
+  -
+    import: content
+  -
+    handle: members
+    field:
+      type: grid
+      display: Teamleden
+      mode: stacked
+      add_row: 'Teamlid toevoegen'
+      localizable: true
+      fields:
+        -
+          import: image
+        -
+          handle: name
+          field:
+            type: text
+            display: Naam
+            width: 50
+            validate:
+              - required
+        -
+          handle: role
+          field:
+            type: text
+            display: Functie
+            width: 50
+        -
+          handle: bio
+          field:
+            type: textarea
+            display: Korte bio
+        -
+          handle: email
+          field:
+            type: text
+            input_type: email
+            display: E-mailadres
+            width: 50
+        -
+          handle: linkedin
+          field:
+            type: text
+            input_type: url
+            display: LinkedIn-profiel
+            width: 50

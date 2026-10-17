@@ -1,0 +1,28 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" align="center" />
+
+        <ul class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {{ block:testimonials }}
+                <li>
+                    <figure class="flex h-full flex-col rounded-2xl bg-surface p-8 text-ink ring-1 ring-ink/10">
+                        <blockquote class="grow text-lg">
+                            <p>&ldquo;{{ quote }}&rdquo;</p>
+                        </blockquote>
+                        <figcaption class="mt-6 flex items-center gap-4">
+                            {{ if image }}
+                                <div class="size-12 shrink-0 overflow-hidden rounded-full">
+                                    <x-picture :image="image" cover sizes="48px" alt="" />
+                                </div>
+                            {{ /if }}
+                            <div>
+                                <p class="font-semibold">{{ name }}</p>
+                                {{ if role }}<p class="text-sm text-ink-muted">{{ role }}</p>{{ /if }}
+                            </div>
+                        </figcaption>
+                    </figure>
+                </li>
+            {{ /block:testimonials }}
+        </ul>
+    </x-container>
+</x-section>

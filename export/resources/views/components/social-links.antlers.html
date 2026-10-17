@@ -1,0 +1,15 @@
+{{#
+    Lijst met social media links.
+    Props: links (grid uit de global "Social media", geef door met :links="social:social_links"), size (sm|md|lg), class
+#}}
+{{ if links }}
+    <ul class="{{ ['flex flex-wrap items-center gap-4', class] | tw_merge }}" {{ attributes:except(['links', 'size', 'class']) }}>
+        {{ links }}
+            <li>
+                <a href="{{ url }}" target="_blank" rel="noopener noreferrer" class="opacity-80 transition-opacity hover:opacity-100">
+                    <x-icon :name="platform:value" variant="socials" :size="size ?? 'md'" :label="platform:label" />
+                </a>
+            </li>
+        {{ /links }}
+    </ul>
+{{ /if }}

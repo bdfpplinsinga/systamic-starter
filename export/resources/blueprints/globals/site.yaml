@@ -1,0 +1,65 @@
+title: Algemeen
+tabs:
+  brand:
+    display: Huisstijl
+    sections:
+      -
+        display: "Logo's"
+        instructions: 'SVG heeft de voorkeur.'
+        fields:
+          -
+            handle: logo
+            field:
+              type: assets
+              display: Logo
+              container: assets
+              max_files: 1
+              width: 50
+          -
+            handle: logo_inverse
+            field:
+              type: assets
+              display: 'Logo op donkere achtergrond'
+              container: assets
+              max_files: 1
+              width: 50
+      -
+        display: 'Favicon en delen'
+        fields:
+          -
+            handle: favicon
+            field:
+              type: assets
+              display: Favicon
+              instructions: 'Vierkant, SVG of PNG van minimaal 512×512.'
+              container: assets
+              max_files: 1
+              width: 50
+          -
+            handle: share_image
+            field:
+              type: assets
+              display: 'Standaard deelafbeelding'
+              instructions: 'Getoond bij delen op social media als een pagina zelf geen afbeelding heeft. 1200×630.'
+              container: assets
+              max_files: 1
+              width: 50
+  header:
+    display: Header
+    sections:
+      -
+        fields:
+          -
+            import: buttons
+  footer:
+    display: Footer
+    sections:
+      -
+        fields:
+          -
+            handle: footer_text
+            field:
+              type: textarea
+              display: Footertekst
+              instructions: 'Korte omschrijving onder het logo in de footer.'
+              character_limit: 200

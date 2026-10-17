@@ -1,0 +1,22 @@
+{{#
+    Kaart voor een entry in een overzicht (nieuws, laatste berichten).
+    Props: url, title, date, image, excerpt, class
+#}}
+<article class="{{ ['group relative flex flex-col overflow-hidden rounded-2xl bg-surface text-ink ring-1 ring-ink/10', class] | tw_merge }}" {{ attributes:except(['url', 'title', 'date', 'image', 'excerpt', 'class']) }}>
+    {{ if image }}
+        <div class="aspect-3/2 overflow-hidden bg-surface-muted">
+            <x-picture :image="image" cover sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" alt="" class="transition-transform duration-300 group-hover:scale-105" />
+        </div>
+    {{ /if }}
+    <div class="flex grow flex-col p-6">
+        {{ if date }}
+            <time datetime="{{ date | format('Y-m-d') }}" class="text-sm text-ink-muted">{{ date | iso_format('D MMMM YYYY') }}</time>
+        {{ /if }}
+        <x-heading as="h3" size="sm" class="mt-2">
+            <a href="{{ url }}" class="after:absolute after:inset-0">{{ title }}</a>
+        </x-heading>
+        {{ if excerpt }}
+            <p class="mt-3 text-ink-muted">{{ excerpt }}</p>
+        {{ /if }}
+    </div>
+</article>

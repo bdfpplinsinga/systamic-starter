@@ -1,12 +1,43 @@
-<footer class="border-t border-ink/10 bg-surface-muted">
-    <x-container class="flex flex-col gap-6 py-10 text-sm text-ink-muted md:flex-row md:items-center md:justify-between">
-        <p>&copy; {{ now format="Y" }} {{ site:name }}</p>
+<footer class="border-t border-ink/10 bg-surface-muted text-sm">
+    <x-container class="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+        <div class="space-y-4 lg:col-span-2">
+            {{ partial:logo }}
+            {{ if site:footer_text }}
+                <p class="max-w-sm text-ink-muted">{{ site:footer_text }}</p>
+            {{ /if }}
+            <x-social-links :links="social:social_links" />
+        </div>
+
+        {{ if company:street || company:email || company:phone || company:opening_hours }}
+            <div>
+                <h2 class="mb-3 font-semibold">Contact</h2>
+                <address class="space-y-1 text-ink-muted not-italic">
+                    {{ if company:street }}
+                        <p>{{ company:street }}<br>{{ company:postal_code }} {{ company:city }}</p>
+                    {{ /if }}
+                    {{ if company:email }}
+                        <p><a href="mailto:{{ company:email }}" class="hover:text-ink">{{ company:email }}</a></p>
+                    {{ /if }}
+                    {{ if company:phone }}
+                        <p><a href="tel:{{ company:phone | replace(' ', '') | replace('(0)', '') }}" class="hover:text-ink">{{ company:phone }}</a></p>
+                    {{ /if }}
+                </address>
+                {{ if company:opening_hours }}
+                    <dl class="mt-4 space-y-1 text-ink-muted">
+                        {{ company:opening_hours }}
+                            <div class="flex gap-4"><dt class="min-w-24">{{ days }}</dt><dd>{{ hours }}</dd></div>
+                        {{ /company:opening_hours }}
+                    </dl>
+                {{ /if }}
+            </div>
+        {{ /if }}
 
         {{# "as" voorkomt dat een lege navigatie de huidige pagina toont. #}}
         {{ nav:footer max_depth="1" as="links" }}
             {{ if links }}
                 <nav aria-label="Footer">
-                    <ul class="flex flex-wrap gap-x-6 gap-y-2">
+                    <h2 class="mb-3 font-semibold">Menu</h2>
+                    <ul class="space-y-2 text-ink-muted">
                         {{ links }}
                             <li><a href="{{ url }}" class="hover:text-ink">{{ title }}</a></li>
                         {{ /links }}
@@ -15,4 +46,22 @@
             {{ /if }}
         {{ /nav:footer }}
     </x-container>
+
+    <div class="border-t border-ink/10">
+        <x-container class="flex flex-col gap-4 py-6 text-ink-muted md:flex-row md:items-center md:justify-between">
+            <p>
+                &copy; {{ now format="Y" }} {{ company:legal_name ?? company:company_name ?? site:name }}
+                {{ if company:coc_number }}<span class="ml-2">KvK {{ company:coc_number }}</span>{{ /if }}
+            </p>
+
+            <ul class="flex flex-wrap gap-x-6 gap-y-2">
+                {{ nav:legal max_depth="1" as="links" }}{{ links }}
+                    <li><a href="{{ url }}" class="hover:text-ink">{{ title }}</a></li>
+                {{ /links }}{{ /nav:legal }}
+                {{ installed:emplify-software/statamic-cookie-dialog }}
+                    <li><button type="button" onclick="CookieDialog.showDialog()" class="hover:text-ink">Cookie-instellingen</button></li>
+                {{ /installed:emplify-software/statamic-cookie-dialog }}
+            </ul>
+        </x-container>
+    </div>
 </footer>

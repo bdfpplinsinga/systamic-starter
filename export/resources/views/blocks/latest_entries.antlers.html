@@ -1,0 +1,18 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" />
+
+        {{# Zonder geldige collectie (bijvoorbeeld als de nieuwsmodule niet is geïnstalleerd) toont het blok alleen de content. #}}
+        {{ if block:collection:handle }}
+        {{ collection :from="block:collection:handle" :limit="block:limit ?? 3" as="items" }}
+            {{ if items }}
+                <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    {{ items }}
+                        <li><x-entry-card :url="url" :title="title" :date="date" :image="image" :excerpt="excerpt" class="h-full" /></li>
+                    {{ /items }}
+                </ul>
+            {{ /if }}
+        {{ /collection }}
+        {{ /if }}
+    </x-container>
+</x-section>

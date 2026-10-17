@@ -2,9 +2,24 @@
 
 class StarterKitPostInstall
 {
+    /**
+     * Pagina's uit optionele modules. De core-trees kennen ze niet, dus als de module
+     * is geïnstalleerd hangen we ze hier in de paginaboom en het hoofdmenu.
+     */
+    protected array $modulePages = [
+        'nieuws' => 'Nieuws toegevoegd op /nieuws.',
+        'blokken' => 'Demopagina toegevoegd op /blokken.',
+    ];
+
     public function handle($console)
     {
-        $this->addDemoPageToTrees($console);
+        $this->publishCookieDialogAssets($console);
+
+        foreach ($this->modulePages as $entry => $message) {
+            if ($this->addPageToTrees($entry)) {
+                $console->line($message);
+            }
+        }
 
         $console->newLine();
         $console->info('Systamic is geïnstalleerd.');
@@ -12,28 +27,41 @@ class StarterKitPostInstall
         $console->line('  1. Pas de design tokens aan in resources/css/site.css (@theme).');
         $console->line('  2. php please make:user   (account voor het control panel)');
         $console->line('  3. npm install && composer dev');
-        $console->line('  4. Bekijk /styleguide (alleen lokaal) voor alle componenten.');
+        $console->line('  4. Vul in het control panel de globals in: Bedrijfsgegevens, Social media en Algemeen.');
+        $console->line('  5. Zet MAIL_* in .env, zodat het contactformulier e-mail verstuurt.');
+        $console->line('  6. Vul de privacyverklaring en algemene voorwaarden in.');
+        $console->line('  7. Bekijk /styleguide (alleen lokaal) voor alle componenten.');
     }
 
     /**
-     * De demopagina zit in een optionele module, dus de core-trees kennen hem niet.
-     * Als de module is geïnstalleerd, hangen we hem hier in de paginaboom en het hoofdmenu.
+     * Cookie Dialog publiceert zijn frontend-bestanden niet vanzelf. Draait in een apart
+     * proces, omdat de addon in dit proces nog niet geladen is. Bestaande content wordt niet overschreven.
      */
-    protected function addDemoPageToTrees($console): void
+    protected function publishCookieDialogAssets($console): void
     {
-        if (! file_exists(base_path('content/collections/pages/blokken.md'))) {
-            return;
+        $result = \Illuminate\Support\Facades\Process::path(base_path())
+            ->run([PHP_BINARY, 'artisan', 'vendor:publish', '--tag=statamic-cookie-dialog']);
+
+        if ($result->failed()) {
+            $console->warn('Cookie Dialog assets niet gepubliceerd. Draai: php artisan vendor:publish --tag=statamic-cookie-dialog');
         }
-
-        $this->appendToTree(base_path('content/trees/collections/pages.yaml'), "  -\n    entry: blokken\n");
-        $this->appendToTree(base_path('content/trees/navigation/main.yaml'), "  -\n    id: nav-blokken\n    entry: blokken\n");
-
-        $console->line('Demopagina toegevoegd op /blokken.');
     }
 
-    protected function appendToTree(string $path, string $item): void
+    protected function addPageToTrees(string $entry): bool
     {
-        if (! file_exists($path) || str_contains(file_get_contents($path), 'entry: blokken')) {
+        if (! file_exists(base_path("content/collections/pages/{$entry}.md"))) {
+            return false;
+        }
+
+        $this->appendToTree(base_path('content/trees/collections/pages.yaml'), $entry, "  -\n    entry: {$entry}\n");
+        $this->appendToTree(base_path('content/trees/navigation/main.yaml'), $entry, "  -\n    id: nav-{$entry}\n    entry: {$entry}\n");
+
+        return true;
+    }
+
+    protected function appendToTree(string $path, string $entry, string $item): void
+    {
+        if (! file_exists($path) || str_contains(file_get_contents($path), "entry: {$entry}\n")) {
             return;
         }
 

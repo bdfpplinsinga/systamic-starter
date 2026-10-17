@@ -1,0 +1,115 @@
+title: Bedrijfsgegevens
+tabs:
+  main:
+    display: Bedrijf
+    sections:
+      -
+        display: Identiteit
+        instructions: 'Gebruikt in de footer, het contactblok en de gestructureerde data voor zoekmachines.'
+        fields:
+          -
+            handle: company_name
+            field:
+              type: text
+              display: Bedrijfsnaam
+              width: 50
+          -
+            handle: legal_name
+            field:
+              type: text
+              display: 'Juridische naam'
+              instructions: 'Alleen invullen als die afwijkt van de bedrijfsnaam.'
+              width: 50
+          -
+            handle: organization_type
+            field:
+              type: button_group
+              display: 'Type organisatie'
+              instructions: 'Lokaal bedrijf als bezoekers langs kunnen komen (winkel, praktijk, kantoor).'
+              options:
+                Organization: Organisatie
+                LocalBusiness: 'Lokaal bedrijf'
+              default: Organization
+          -
+            handle: coc_number
+            field:
+              type: text
+              display: KvK-nummer
+              width: 50
+          -
+            handle: vat_number
+            field:
+              type: text
+              display: Btw-nummer
+              width: 50
+      -
+        display: Contact
+        fields:
+          -
+            handle: email
+            field:
+              type: text
+              input_type: email
+              display: E-mailadres
+              width: 50
+              validate:
+                - nullable
+                - email
+          -
+            handle: phone
+            field:
+              type: text
+              input_type: tel
+              display: Telefoonnummer
+              width: 50
+      -
+        display: Adres
+        fields:
+          -
+            handle: street
+            field:
+              type: text
+              display: 'Straat en huisnummer'
+          -
+            handle: postal_code
+            field:
+              type: text
+              display: Postcode
+              width: 33
+          -
+            handle: city
+            field:
+              type: text
+              display: Plaats
+              width: 66
+          -
+            handle: country
+            field:
+              type: text
+              display: Land
+              default: Nederland
+  hours:
+    display: Openingstijden
+    sections:
+      -
+        fields:
+          -
+            handle: opening_hours
+            field:
+              type: grid
+              display: Openingstijden
+              mode: table
+              add_row: 'Regel toevoegen'
+              fields:
+                -
+                  handle: days
+                  field:
+                    type: text
+                    display: Dagen
+                    placeholder: 'ma t/m vr'
+                -
+                  handle: hours
+                  field:
+                    type: text
+                    display: Tijden
+                    placeholder: '09:00 - 17:00'

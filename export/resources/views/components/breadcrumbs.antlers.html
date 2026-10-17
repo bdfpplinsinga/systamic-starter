@@ -1,0 +1,18 @@
+{{#
+    Kruimelpad op basis van de paginastructuur. Zet hem niet op de homepage.
+    Props: class
+#}}
+    <nav aria-label="Kruimelpad" class="{{ ['text-sm text-ink-muted', class] | tw_merge }}" {{ attributes:except(['class']) }}>
+        <ol class="flex flex-wrap items-center gap-x-2">
+            {{ nav:breadcrumbs }}
+                <li class="flex items-center gap-x-2">
+                    {{ if last }}
+                        <span aria-current="page" class="text-ink">{{ title }}</span>
+                    {{ else }}
+                        <a href="{{ url }}" class="hover:text-ink">{{ title }}</a>
+                        <x-icon name="chevron-right" size="sm" />
+                    {{ /if }}
+                </li>
+            {{ /nav:breadcrumbs }}
+        </ol>
+    </nav>

@@ -1,0 +1,36 @@
+title: 'Blok - Testimonials'
+fields:
+  -
+    import: content
+  -
+    handle: testimonials
+    field:
+      type: grid
+      display: Testimonials
+      mode: stacked
+      add_row: 'Testimonial toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: quote
+          field:
+            type: textarea
+            display: Citaat
+            validate:
+              - required
+        -
+          handle: name
+          field:
+            type: text
+            display: Naam
+            width: 50
+            validate:
+              - required
+        -
+          handle: role
+          field:
+            type: text
+            display: Functie of bedrijf
+            width: 50
+        -
+          import: image
