@@ -86,6 +86,17 @@
         </div>
 
         <div class="space-y-4">
+            <x-heading size="lg">Slider</x-heading>
+            <x-slider label="Voorbeeldslider" per_view="3">
+                {{ loop from="1" to="6" }}
+                    <x-slide>
+                        <div class="flex h-40 items-center justify-center rounded-2xl bg-surface-muted text-2xl font-bold">Slide {{ value }}</div>
+                    </x-slide>
+                {{ /loop }}
+            </x-slider>
+        </div>
+
+        <div class="space-y-4">
             <x-heading size="lg">Modal + video</x-heading>
             <x-modal label="Video">
                 <x-slot:trigger>

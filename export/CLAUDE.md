@@ -12,6 +12,7 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
   - Each component documents its props in an Antlers comment at the top.
   - Classes are always combined with `[base, variant_class, class] | tw_merge`, so a `class` passed in from outside wins.
   - Other HTML attributes are passed through with `{{ attributes:except([...props]) }}`.
+  - Multi-word props are camelCased by Blade: `per_view="3"` in the caller is `{{ perView }}` inside the component.
   - Named slots: `<x-slot:trigger>` in the caller becomes the `{{ trigger }}` variable in the component.
   - Components do not see globals or page data. Pass them in: `<x-social-links :links="social:social_links" />`. Partials (`partials/logo`) do see the cascade.
 - **Design tokens** live only in `@theme` in `resources/css/site.css` (`primary`, `secondary`, `surface`, `ink`, `accent`, …). Components use these tokens, never hard-coded Tailwind colours. Use `accent` (not `primary`) for eyebrows and links: a `background="primary"` section remaps `accent` so it stays readable.
@@ -26,13 +27,14 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
 - **Antlers gotchas**:
   - A ternary inside an array literal breaks `tw_merge` (`[a, x ? 'b' : '', class]` drops classes). Assign the ternary to a variable first.
   - A modifier binds tighter than `??`: `{{ a ?? b | to_json }}` only encodes `b`. Write `{{ (a ?? b) | to_json }}`.
-- **Globals** (Dutch labels): `company` (Bedrijfsgegevens: name, address, KvK, opening hours), `social` (Social media), `site` (Algemeen: logo, favicon, share image, header buttons, footer text), `scripts` (tracking code per cookie group). Header, footer, `partials/head_meta` and `partials/structured_data` read them; add new site-wide settings there, not to page blueprints.
+- **Globals** (Dutch labels): `company` (Bedrijfsgegevens: name, address, KvK, opening hours), `social` (Social media), `general` (Algemeen: logo, favicon, share image, header buttons, footer text; not `site`, which would shadow Statamic's own `site` variable), `scripts` (tracking code per cookie group). Header, footer, `partials/head_meta` and `partials/structured_data` read them; add new site-wide settings there, not to page blueprints.
 - **Cookies and scripts**: the Cookie Dialog addon (`emplify-software/statamic-cookie-dialog`) shows the consent dialog; its texts live in `content/cookie-dialog`. Third-party code goes in the `scripts` global, never in templates: `partials/scripts` only outputs a script outside the `essential` group inside `{{ cookie:allowed }}`.
 - **Forms**: config in `resources/forms`, fields in `resources/blueprints/forms`. The `form` block renders any form via `{{ form:fields }}`; field styling sits in the `form-theme` utility in `site.css`. Every form needs a `honeypot`. Validation messages are in `lang/nl/validation.php`.
 - **Legal pages and menus**: `main` (header), `footer` and `legal` (bottom bar: Privacyverklaring, Algemene voorwaarden, plus the cookie settings button).
 - **News** is an optional kit module (`news` collection, `/nieuws/{slug}`, views in `resources/views/news`). Blocks must not depend on it: `latest_entries` takes any collection.
 - **Navigation**: always use `{{ nav:handle as="links" }}{{ links }}…{{ /links }}{{ /nav:handle }}`. Without `as`, an empty nav renders the current page's context.
-- **SEO**: `partials/head_meta` uses SEO Pro when it is installed (`{{ installed:statamic/seo-pro }}`), otherwise a plain fallback that uses `site:share_image` for og:image. With SEO Pro, set the default share image in its site defaults. Nothing else may assume SEO Pro is installed.
+- **SEO**: `partials/head_meta` uses SEO Pro when it is installed (`{{ installed:statamic/seo-pro }}`), otherwise a plain fallback that uses `general:share_image` for og:image. With SEO Pro, set the default share image in its site defaults. Nothing else may assume SEO Pro is installed.
 - **Assets**: one container, `assets` (`public/assets`). Glide presets for `<x-picture>` are in `config/statamic/assets.php`.
+- **Slider**: `<x-slider label="…" per_view="3">` with `<x-slide>` children. Swiper (with A11y, Keyboard, Navigation, Pagination) is loaded on demand from `resources/js/slider.js`, only on pages that have a slider. The gallery block has a `layout` option (grid or slider).
 - `/styleguide` (local env only) shows every component. Add a new component there too.
 - Labels in the control panel and front end are in Dutch.

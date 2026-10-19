@@ -2,8 +2,8 @@
     <x-container class="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div class="space-y-4 lg:col-span-2">
             {{ partial:logo }}
-            {{ if site:footer_text }}
-                <p class="max-w-sm text-ink-muted">{{ site:footer_text }}</p>
+            {{ if general:footer_text }}
+                <p class="max-w-sm text-ink-muted">{{ general:footer_text }}</p>
             {{ /if }}
             <x-social-links :links="social:social_links" />
         </div>

@@ -11,11 +11,11 @@
                 </ul>
             </nav>
 
-            {{ if site:buttons }}
+            {{ if general:buttons }}
                 <div class="flex items-center gap-3">
-                    {{ site:buttons }}
+                    {{ general:buttons }}
                         <x-button :href="link" :variant="variant" size="sm">{{ label }}</x-button>
-                    {{ /site:buttons }}
+                    {{ /general:buttons }}
                 </div>
             {{ /if }}
         </div>
@@ -34,11 +34,11 @@
                     <li><a href="{{ url }}" class="block rounded-lg px-3 py-2 font-semibold hover:bg-surface-muted">{{ title }}</a></li>
                 {{ /links }}{{ /nav:main }}
             </ul>
-            {{ if site:buttons }}
+            {{ if general:buttons }}
                 <div class="flex flex-wrap gap-3 px-3">
-                    {{ site:buttons }}
+                    {{ general:buttons }}
                         <x-button :href="link" :variant="variant" size="sm">{{ label }}</x-button>
-                    {{ /site:buttons }}
+                    {{ /general:buttons }}
                 </div>
             {{ /if }}
         </x-container>

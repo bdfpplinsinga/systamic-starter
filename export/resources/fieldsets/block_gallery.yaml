@@ -3,4 +3,14 @@ fields:
   -
     import: heading
   -
+    handle: layout
+    field:
+      type: button_group
+      display: Weergave
+      options:
+        grid: Raster
+        slider: Slider
+      default: grid
+      listable: false
+  -
     import: images

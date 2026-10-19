@@ -1,0 +1,45 @@
+{{#
+    Toegankelijke slider op basis van Swiper. Vul hem met <x-slide> elementen in de slot.
+    Props: label (verplicht, beschrijft de slider voor schermlezers),
+           per_view (slides naast elkaar op desktop, standaard 1; komt binnen als perView),
+           loop (true/false), navigation (standaard true), pagination (standaard true), class
+    Voorbeeld:
+        <x-slider label="Projecten" per_view="3">
+            <x-slide>…</x-slide>
+        </x-slider>
+#}}
+{{ show_navigation = navigation !== false && navigation !== 'false' }}
+{{ show_pagination = pagination !== false && pagination !== 'false' }}
+{{ loop_value = loop === true || loop === 'true' ? 'true' : 'false' }}
+
+<div
+    x-data="slider({ perView: {{ perView ?? 1 }}, loop: {{ loop_value }} })"
+    role="region"
+    aria-roledescription="carrousel"
+    aria-label="{{ label ?? 'Slider' }}"
+    class="{{ ['relative', class] | tw_merge }}"
+    {{ attributes:except(['label', 'perView', 'loop', 'navigation', 'pagination', 'class']) }}
+>
+    <div x-ref="swiper" class="swiper">
+        <div class="swiper-wrapper">
+            {{ slot }}
+        </div>
+    </div>
+
+    {{ if show_navigation || show_pagination }}
+        <div class="mt-6 flex items-center justify-between gap-6">
+            <div x-ref="pagination" class="flex flex-wrap items-center gap-2"></div>
+
+            {{ if show_navigation }}
+                <div class="flex gap-2">
+                    <button x-ref="prev" type="button" class="flex size-11 items-center justify-center rounded-full ring-1 ring-current/20 transition hover:ring-current/60 disabled:opacity-30 [&.swiper-button-disabled]:opacity-30">
+                        <x-icon name="chevron-left" />
+                    </button>
+                    <button x-ref="next" type="button" class="flex size-11 items-center justify-center rounded-full ring-1 ring-current/20 transition hover:ring-current/60 disabled:opacity-30 [&.swiper-button-disabled]:opacity-30">
+                        <x-icon name="chevron-right" />
+                    </button>
+                </div>
+            {{ /if }}
+        </div>
+    {{ /if }}
+</div>

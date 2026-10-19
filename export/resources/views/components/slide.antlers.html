@@ -1,0 +1,7 @@
+{{#
+    Eén slide binnen <x-slider>. Swiper voegt zelf role="group" en een label ("2 van 5") toe.
+    Props: class
+#}}
+<div class="{{ ['swiper-slide h-auto', class] | tw_merge }}" {{ attributes:except(['class']) }}>
+    {{ slot }}
+</div>

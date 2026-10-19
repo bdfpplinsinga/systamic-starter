@@ -12,7 +12,7 @@
     {{ if company:email }}"email": {{ company:email | to_json }},{{ /if }}
     {{ if company:phone }}"telephone": {{ company:phone | to_json }},{{ /if }}
     {{ if company:vat_number }}"vatID": {{ company:vat_number | to_json }},{{ /if }}
-    {{ if site:logo }}"logo": {{ site:logo:permalink | to_json }},{{ /if }}
+    {{ if general:logo }}"logo": {{ general:logo:permalink | to_json }},{{ /if }}
     {{ if company:street }}"address": {
         "@type": "PostalAddress",
         "streetAddress": {{ company:street | to_json }},

@@ -4,12 +4,24 @@
             <x-heading :as="block:heading_level" size="xl" class="mb-10">{{ block:heading }}</x-heading>
         {{ /if }}
 
-        <ul class="grid grid-cols-2 gap-4 md:grid-cols-3">
-            {{ block:images }}
-                <li class="aspect-square overflow-hidden rounded-lg">
-                    <x-picture :image="url" cover sizes="(min-width: 768px) 33vw, 50vw" />
-                </li>
-            {{ /block:images }}
-        </ul>
+        {{ if block:layout:value == 'slider' }}
+            <x-slider :label="block:heading ?? 'Galerij'">
+                {{ block:images }}
+                    <x-slide>
+                        <div class="aspect-3/2 overflow-hidden rounded-lg">
+                            <x-picture :image="url" cover sizes="(min-width: 1280px) 1280px, 100vw" />
+                        </div>
+                    </x-slide>
+                {{ /block:images }}
+            </x-slider>
+        {{ else }}
+            <ul class="grid grid-cols-2 gap-4 md:grid-cols-3">
+                {{ block:images }}
+                    <li class="aspect-square overflow-hidden rounded-lg">
+                        <x-picture :image="url" cover sizes="(min-width: 768px) 33vw, 50vw" />
+                    </li>
+                {{ /block:images }}
+            </ul>
+        {{ /if }}
     </x-container>
 </x-section>

@@ -81,3 +81,12 @@
         @apply mt-1 size-4 shrink-0 accent-primary;
     }
 }
+
+/* Paginering van <x-slider>. Swiper zet deze classes zelf, daarom staan ze hier. */
+.slider-bullet {
+    @apply block size-2.5 cursor-pointer rounded-full bg-current opacity-30 transition-opacity hover:opacity-60;
+}
+
+.slider-bullet-active {
+    @apply bg-accent opacity-100 hover:opacity-100;
+}

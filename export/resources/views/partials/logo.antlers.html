@@ -1,5 +1,5 @@
 {{# Logo uit de global "Algemeen", met de sitenaam als fallback. Param: inverse (true voor donkere achtergrond). #}}
-{{ logo_asset = inverse ? (site:logo_inverse ?? site:logo) : site:logo }}
+{{ logo_asset = inverse ? (general:logo_inverse ?? general:logo) : general:logo }}
 <a href="/" class="inline-flex items-center font-heading text-lg font-bold">
     {{ if logo_asset }}
         {{ asset :url="logo_asset" }}

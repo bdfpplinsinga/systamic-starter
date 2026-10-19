@@ -14,15 +14,15 @@
     <meta property="og:title" content="{{ page_title | sanitize }}">
     <meta property="og:url" content="{{ permalink }}">
     {{ if meta_description }}<meta property="og:description" content="{{ meta_description | sanitize }}">{{ /if }}
-    {{ share = image ?? site:share_image }}
+    {{ share = image ?? general:share_image }}
     {{ if share }}
         {{ asset :url="share" }}<meta property="og:image" content="{{ glide:url preset='lg' absolute="true" }}">{{ /asset }}
     {{ /if }}
     <link rel="canonical" href="{{ permalink }}">
 {{ /unless }}
 
-{{ if site:favicon }}
-    {{ asset :url="site:favicon" }}
+{{ if general:favicon }}
+    {{ asset :url="general:favicon" }}
         {{ if extension == 'svg' }}
             <link rel="icon" href="{{ url }}" type="image/svg+xml">
         {{ else }}
