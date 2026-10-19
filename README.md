@@ -38,9 +38,9 @@ Vul in het control panel de globals in (Bedrijfsgegevens, Social media, Algemeen
 
 - **Componenten** (`resources/views/components`): button, heading, prose, icon, picture, video, modal, section, container, content, breadcrumbs, social-links, entry-card en slider (Swiper, toegankelijk, met slides via de slot). Allemaal met `tw_merge`, zodat een `class` van buitenaf wint.
 - **Page builder** met de blokken hero, tekst, media & tekst, call to action, kaarten, FAQ, testimonials, team, afbeelding, galerij (raster of slider), video, logo's, formulier en laatste berichten.
-- **Globals**: Bedrijfsgegevens (adres, KvK, openingstijden), Social media, Algemeen (logo, favicon, deelafbeelding, headerbuttons, footertekst) en Scripts (trackingcode per cookiegroep).
+- **Globals**: Bedrijfsgegevens (adres, KvK, openingstijden), Social media, Algemeen (logo, favicon, deelafbeelding, headerbuttons, footertekst) en Scripts (Google Tag Manager-ID en overige trackingcode per cookiegroep).
 - **Contactpagina** met formulier: honeypot, Nederlandse foutmeldingen en een e-mail naar het adres uit Bedrijfsgegevens.
-- **Cookietoestemming** met [Cookie Dialog](https://statamic.com/addons/emplify-software/cookie-dialog). Scripts uit de global Scripts laden pas na toestemming.
+- **Cookietoestemming** met [Cookie Dialog](https://statamic.com/addons/emplify-software/cookie-dialog). Scripts uit de global Scripts laden pas na toestemming. Google Tag Manager draait met Consent Mode v2: Statistieken geeft analytics vrij, Marketing de advertentiesignalen.
 - **SEO-basis**: favicon, Open Graph met fallback-afbeelding, JSON-LD voor de organisatie (en per nieuwsbericht).
 - **Juridische pagina's** (privacyverklaring, algemene voorwaarden) in een eigen menu onderaan de footer, plus kruimelpad.
 - **Fieldsets in drie lagen**: velden → groepen (`content`, `block_settings`) → blokken.

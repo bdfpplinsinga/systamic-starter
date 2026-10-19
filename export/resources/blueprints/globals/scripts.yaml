@@ -1,10 +1,26 @@
 title: Scripts
 tabs:
+  gtm:
+    display: 'Google Tag Manager'
+    sections:
+      -
+        instructions: 'Laadt Google Tag Manager met Consent Mode v2. Alles staat standaard op "geweigerd" en wordt per cookiecategorie vrijgegeven zodra de bezoeker toestemming geeft. Stel in GTM je tags in met de ingebouwde toestemmingscontroles.'
+        fields:
+          -
+            handle: gtm_id
+            field:
+              type: text
+              display: 'Container-ID'
+              instructions: 'Bijvoorbeeld GTM-ABC1234. Leeg laten om GTM niet te laden.'
+              placeholder: GTM-XXXXXXX
+              validate:
+                - nullable
+                - 'regex:/^GTM-[A-Z0-9]+$/'
   main:
     display: Scripts
     sections:
       -
-        instructions: 'Scripts van derden, zoals Google Tag Manager of een chatwidget. Ze worden pas geladen als de bezoeker de bijbehorende cookiecategorie accepteert.'
+        instructions: 'Overige scripts van derden, zoals een chatwidget of pixel. Ze worden pas geladen als de bezoeker de bijbehorende cookiecategorie accepteert.'
         fields:
           -
             handle: scripts

@@ -3,11 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{ partial:gtm at="head" }}
         {{ partial:head_meta }}
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
         {{ stack:head }}
     </head>
     <body class="flex min-h-dvh flex-col">
+        {{ partial:gtm at="body" }}
         <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-surface focus:px-4 focus:py-2">Naar inhoud</a>
         {{ partial:header }}
         <main id="main" class="grow">

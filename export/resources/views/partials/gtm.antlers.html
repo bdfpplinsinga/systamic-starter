@@ -1,0 +1,39 @@
+{{#
+    Google Tag Manager met Consent Mode v2, op basis van de global "Scripts" (gtm_id). Param: at (head|body).
+    Toestemming staat standaard op "denied". Cookie Dialog geeft per groep vrij:
+      statistics → analytics_storage
+      marketing  → ad_storage, ad_user_data, ad_personalization
+    Vóór toestemming plaatst {{ cookie:allowed }} de update in een template en voert hem uit zodra de bezoeker akkoord geeft.
+#}}
+{{ if scripts:gtm_id }}
+    {{ if at == 'head' }}
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+                analytics_storage: 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+        </script>
+        {{ nocache }}
+            {{ cookie:allowed group="statistics" }}
+                <script>gtag('consent', 'update', { analytics_storage: 'granted' });</script>
+            {{ /cookie:allowed }}
+            {{ cookie:allowed group="marketing" }}
+                <script>gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });</script>
+            {{ /cookie:allowed }}
+        {{ /nocache }}
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer',{{ scripts:gtm_id | to_json }});</script>
+    {{ else }}
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ scripts:gtm_id | urlencode }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {{ /if }}
+{{ /if }}
