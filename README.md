@@ -58,4 +58,5 @@ composer export          # schrijft naar ../systamic-starter
 cd ../systamic-starter
 git diff                 # controleren
 git commit -am "..." && git push
+git tag v0.x.0 && git push origin v0.x.0   # nieuwe installs pakken de laatste tag
 ```
