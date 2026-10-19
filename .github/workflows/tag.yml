@@ -1,0 +1,36 @@
+# Zet bij elke push naar main een nieuwe patch-tag (v0.1.0, v0.1.1, ...),
+# zodat `statamic new` altijd de laatste versie van de kit installeert.
+# Voor een grotere stap: tag zelf handmatig (bijv. v0.2.0); de action telt daarna vanaf die tag verder.
+name: Tag release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Volgende tag bepalen en pushen
+        run: |
+          if git tag --points-at HEAD | grep -q '^v'; then
+            echo "Deze commit heeft al een tag."
+            exit 0
+          fi
+          latest=$(git tag --list 'v*' --sort=-v:refname | head -n1)
+          if [ -z "$latest" ]; then
+            next="v0.1.0"
+          else
+            IFS=. read -r major minor patch <<< "${latest#v}"
+            next="v${major}.${minor}.$((patch + 1))"
+          fi
+          git tag "$next"
+          git push origin "$next"
+          echo "Getagd als $next"

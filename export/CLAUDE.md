@@ -1,6 +1,6 @@
 # Systamic
 
-This project uses the **Systamic** Statamic starter kit. Its source is the development site `bdfpplinsinga/systamic-starter-site`. There you build and test, then run `composer export` (that is, `php please starter-kit:export ../systamic-starter --clear`) to update the kit repo `bdfpplinsinga/systamic-starter`. New projects install the kit with `statamic new <name> bdfpplinsinga/systamic-starter`. Kit configuration lives in `package/` (`starter-kit.yaml`, `composer.json`, `StarterKitPostInstall.php`, `README.md`), which only exists in the dev site.
+This project uses the **Systamic** Statamic starter kit. Its source is the development site `bdfpplinsinga/systamic-starter-site`. There you build and test, then run `composer export` (`php please starter-kit:export ../systamic-starter --clear`, then restores `.github` in the kit repo, which `--clear` deletes) to update the kit repo `bdfpplinsinga/systamic-starter`. A GitHub Action in the kit repo tags every push to main with the next patch version. New projects install the kit with `statamic new <name> bdfpplinsinga/systamic-starter`. Kit configuration lives in `package/` (`starter-kit.yaml`, `composer.json`, `StarterKitPostInstall.php`, `README.md`), which only exists in the dev site.
 
 Stack: Statamic 6, Laravel 13, Antlers, Tailwind 4 (Vite), Alpine.js (with the collapse and focus plugins), `marcorieser/tailwind-merge-statamic`.
 
