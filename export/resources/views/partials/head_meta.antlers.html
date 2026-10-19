@@ -6,11 +6,16 @@
 {{ if environment != 'production' }}
     <meta name="robots" content="noindex, nofollow">
 {{ /if }}
+{{ page_title = is_homepage ? site:name : title + ' | ' + site:name }}
 {{ installed:statamic/seo-pro }}
-    {{ seo_pro:meta }}
+    {{ seo_meta = {seo_pro:meta} }}
+    {{ seo_meta }}
+    {{# SEO Pro laat de title weg als SEO voor de pagina uit staat of er geen titel is; een pagina heeft er altijd één nodig. #}}
+    {{ unless seo_meta | contains('<title') }}
+        <title>{{ page_title | sanitize }}</title>
+    {{ /unless }}
 {{ /installed:statamic/seo-pro }}
 {{ unless {installed:statamic/seo-pro} }}
-    {{ page_title = is_homepage ? site:name : title + ' | ' + site:name }}
     <title>{{ page_title | sanitize }}</title>
     {{ if meta_description }}<meta name="description" content="{{ meta_description | sanitize }}">{{ /if }}
     <meta property="og:type" content="website">
