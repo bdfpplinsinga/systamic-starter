@@ -1,0 +1,31 @@
+{{#
+    Deelknoppen: gewone links naar LinkedIn, Facebook, X, WhatsApp en e-mail (geen scripts van derden,
+    dus geen toestemming nodig), plus "Link kopiëren".
+    Props: url (absolute URL), title, class
+#}}
+{{ share_url = url | urlencode }}
+{{ share_title = title | urlencode }}
+{{ link_class = "flex size-10 items-center justify-center rounded-full bg-surface-muted text-ink transition-colors hover:bg-primary hover:text-primary-contrast" }}
+
+<div class="{{ ['flex flex-wrap items-center gap-3', class] | tw_merge }}" {{ attributes:except(['url', 'title', 'class']) }}>
+    <p class="mr-1 text-sm font-semibold">Delen</p>
+    <ul class="flex flex-wrap gap-2">
+        <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" target="_blank" rel="noopener" class="{{ link_class }}"><x-icon name="linkedin" variant="socials" size="sm" label="Deel op LinkedIn" /></a></li>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" class="{{ link_class }}"><x-icon name="facebook" variant="socials" size="sm" label="Deel op Facebook" /></a></li>
+        <li><a href="https://x.com/intent/post?url={{ share_url }}&text={{ share_title }}" target="_blank" rel="noopener" class="{{ link_class }}"><x-icon name="x" variant="socials" size="sm" label="Deel op X" /></a></li>
+        <li><a href="https://wa.me/?text={{ share_title }}%20{{ share_url }}" target="_blank" rel="noopener" class="{{ link_class }}"><x-icon name="whatsapp" variant="socials" size="sm" label="Deel via WhatsApp" /></a></li>
+        <li><a href="mailto:?subject={{ share_title }}&body={{ share_url }}" class="{{ link_class }}"><x-icon name="envelope" size="sm" label="Deel via e-mail" /></a></li>
+        <li x-data="{ copied: false }">
+            <button
+                type="button"
+                x-on:click="navigator.clipboard.writeText({{ url | to_json | entities }}).then(() => { copied = true; setTimeout(() => copied = false, 2000) })"
+                class="{{ link_class }}"
+            >
+                <span x-show="!copied"><x-icon name="link" size="sm" /></span>
+                <span x-show="copied" x-cloak><x-icon name="check" size="sm" /></span>
+                <span class="sr-only">Link kopiëren</span>
+            </button>
+            <span class="sr-only" aria-live="polite" x-text="copied ? 'Link gekopieerd' : ''"></span>
+        </li>
+    </ul>
+</div>

@@ -46,6 +46,16 @@ tabs:
               validate:
                 - required
           -
+            handle: categorie
+            field:
+              type: terms
+              display: Categorieën
+              taxonomies:
+                - categorie
+              mode: select
+              create: true
+              localizable: true
+          -
             handle: meta_description
             field:
               type: textarea

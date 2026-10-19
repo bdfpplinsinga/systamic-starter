@@ -1,0 +1,14 @@
+{{# Filter op categorie, boven het nieuwsoverzicht en op categoriepagina's. #}}
+{{ taxonomy:categorie collection="news" as="categories" }}
+    {{ if categories }}
+        <nav aria-label="Categorieën" class="mt-8">
+            <ul class="flex flex-wrap gap-2">
+                <li><a href="/nieuws" class="{{ segment_2 ? 'bg-surface-muted text-ink hover:bg-secondary' : 'bg-primary text-primary-contrast' }} inline-block rounded-full px-4 py-1.5 text-sm font-semibold" {{ unless segment_2 }}aria-current="page"{{ /unless }}>Alles</a></li>
+                {{ categories }}
+                    {{ active = url == current_uri }}
+                    <li><a href="{{ url }}" class="{{ active ? 'bg-primary text-primary-contrast' : 'bg-surface-muted text-ink hover:bg-secondary' }} inline-block rounded-full px-4 py-1.5 text-sm font-semibold" {{ if active }}aria-current="page"{{ /if }}>{{ title }}</a></li>
+                {{ /categories }}
+            </ul>
+        </nav>
+    {{ /if }}
+{{ /taxonomy:categorie }}

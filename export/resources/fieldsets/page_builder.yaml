@@ -17,6 +17,7 @@ fields:
             hero:
               display: 'Hero'
               instructions: 'Groot openingsblok met kop, tekst, buttons en afbeelding of video.'
+              image: hero.jpg
               fields:
                 -
                   import: block_hero
@@ -25,6 +26,7 @@ fields:
             text:
               display: 'Tekst'
               instructions: 'Lopende tekst.'
+              image: text.jpg
               fields:
                 -
                   import: block_text
@@ -33,6 +35,7 @@ fields:
             media_text:
               display: 'Media & tekst'
               instructions: 'Content naast een afbeelding.'
+              image: media_text.jpg
               fields:
                 -
                   import: block_media_text
@@ -41,6 +44,7 @@ fields:
             call_to_action:
               display: 'Call to action'
               instructions: 'Opvallend blok met kop en buttons.'
+              image: call_to_action.jpg
               fields:
                 -
                   import: block_cta
@@ -49,14 +53,52 @@ fields:
             cards:
               display: 'Kaarten'
               instructions: 'Raster met kaarten.'
+              image: cards.jpg
               fields:
                 -
                   import: block_cards
                 -
                   import: block_settings
+            features:
+              display: 'USP''s & cijfers'
+              instructions: 'Voordelen of kerncijfers met een icoon.'
+              image: features.jpg
+              fields:
+                -
+                  import: block_features
+                -
+                  import: block_settings
+            steps:
+              display: 'Stappen'
+              instructions: 'Een werkwijze of stappenplan, genummerd.'
+              image: steps.jpg
+              fields:
+                -
+                  import: block_steps
+                -
+                  import: block_settings
+            tabs:
+              display: 'Tabs'
+              instructions: 'Inhoud verdeeld over tabbladen.'
+              image: tabs.jpg
+              fields:
+                -
+                  import: block_tabs
+                -
+                  import: block_settings
+            pricing:
+              display: 'Prijzen'
+              instructions: 'Pakketten met prijs en wat erin zit.'
+              image: pricing.jpg
+              fields:
+                -
+                  import: block_pricing
+                -
+                  import: block_settings
             faq:
               display: 'FAQ'
               instructions: 'Vragen en antwoorden die uitklappen.'
+              image: faq.jpg
               fields:
                 -
                   import: block_faq
@@ -65,6 +107,7 @@ fields:
             testimonials:
               display: 'Testimonials'
               instructions: 'Citaten van klanten.'
+              image: testimonials.jpg
               fields:
                 -
                   import: block_testimonials
@@ -73,6 +116,7 @@ fields:
             team:
               display: 'Team'
               instructions: 'Raster met teamleden.'
+              image: team.jpg
               fields:
                 -
                   import: block_team
@@ -84,6 +128,7 @@ fields:
             image:
               display: 'Afbeelding'
               instructions: 'Eén afbeelding met bijschrift.'
+              image: image.jpg
               fields:
                 -
                   import: block_image
@@ -92,6 +137,7 @@ fields:
             gallery:
               display: 'Galerij'
               instructions: 'Raster met afbeeldingen.'
+              image: gallery.jpg
               fields:
                 -
                   import: block_gallery
@@ -100,14 +146,25 @@ fields:
             video:
               display: 'Video'
               instructions: 'YouTube, Vimeo of eigen video.'
+              image: video.jpg
               fields:
                 -
                   import: block_video
                 -
                   import: block_settings
+            map:
+              display: 'Kaart'
+              instructions: 'Locatie op een kaart van OpenStreetMap. Laadt pas na toestemming.'
+              image: map.jpg
+              fields:
+                -
+                  import: block_map
+                -
+                  import: block_settings
             logos:
               display: 'Logo''s'
               instructions: 'Rij met logo''s van klanten of partners.'
+              image: logos.jpg
               fields:
                 -
                   import: block_logos
@@ -119,6 +176,7 @@ fields:
             form:
               display: 'Formulier'
               instructions: 'Een formulier, bijvoorbeeld het contactformulier.'
+              image: form.jpg
               fields:
                 -
                   import: block_form
@@ -127,6 +185,7 @@ fields:
             latest_entries:
               display: 'Laatste berichten'
               instructions: 'De nieuwste entries uit een collectie, zoals nieuws.'
+              image: latest_entries.jpg
               fields:
                 -
                   import: block_latest_entries

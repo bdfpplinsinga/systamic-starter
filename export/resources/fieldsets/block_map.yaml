@@ -1,0 +1,33 @@
+title: 'Blok - Kaart'
+fields:
+  -
+    import: content
+  -
+    handle: latitude
+    field:
+      type: float
+      display: Breedtegraad
+      instructions: 'Zoek het adres op openstreetmap.org, klik met rechts op de plek en kies "Toon adres". Bijvoorbeeld 52.3702.'
+      width: 33
+      validate:
+        - required
+  -
+    handle: longitude
+    field:
+      type: float
+      display: Lengtegraad
+      instructions: 'Bijvoorbeeld 4.8952.'
+      width: 33
+      validate:
+        - required
+  -
+    handle: zoom
+    field:
+      type: button_group
+      display: Zoom
+      default: street
+      width: 33
+      options:
+        street: Straat
+        district: Wijk
+        city: Stad

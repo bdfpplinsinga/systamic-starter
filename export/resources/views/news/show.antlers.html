@@ -5,7 +5,12 @@
 <article>
     <x-section spacing="sm">
         <x-container width="narrow">
-            <time datetime="{{ date | format('Y-m-d') }}" class="text-sm text-ink-muted">{{ date | iso_format('D MMMM YYYY') }}</time>
+            <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-muted">
+                <time datetime="{{ date | format('Y-m-d') }}">{{ date | iso_format('D MMMM YYYY') }}</time>
+                {{ categorie }}
+                    <a href="{{ url }}" class="rounded-full bg-surface-muted px-3 py-0.5 font-semibold text-ink hover:text-accent">{{ title }}</a>
+                {{ /categorie }}
+            </p>
             <x-heading as="h1" size="3xl" class="mt-2">{{ title }}</x-heading>
             {{ if excerpt }}
                 <p class="mt-6 text-xl text-ink-muted">{{ excerpt }}</p>
@@ -21,9 +26,14 @@
     </x-section>
 
     {{ partial:page_builder }}
+
+    <x-container width="narrow" class="pb-16">
+        <x-share :url="permalink" :title="title" class="border-t border-ink/10 pt-8" />
+    </x-container>
 </article>
 
 {{ push:head }}
+<link rel="alternate" type="application/rss+xml" title="Nieuws" href="/nieuws/feed">
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",

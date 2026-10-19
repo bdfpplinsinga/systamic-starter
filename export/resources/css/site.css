@@ -1,4 +1,11 @@
 @import "tailwindcss";
+
+/*
+ * Fonts worden zelf gehost: Fontsource-pakketten uit npm, door Vite meegebundeld. Geen Google Fonts,
+ * dus geen verzoek naar derden en geen cookiemelding nodig. Ander font: npm i @fontsource-variable/<naam>,
+ * vervang de import hieronder en pas --font-sans of --font-heading aan in @theme.
+ */
+@import "@fontsource-variable/inter";
 @plugin "@tailwindcss/typography";
 
 @source "../views";
@@ -9,7 +16,7 @@
  * deze tokens, nooit vaste kleuren of fonts.
  */
 @theme {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     --font-heading: var(--font-sans);
 
     --color-primary: oklch(0.55 0.2 260);
@@ -38,7 +45,11 @@
     }
 
     body {
-        @apply bg-surface text-ink font-sans antialiased;
+        @apply bg-surface font-sans text-ink antialiased;
+    }
+
+    mark {
+        @apply rounded-sm bg-accent/15 px-0.5 text-inherit;
     }
 }
 

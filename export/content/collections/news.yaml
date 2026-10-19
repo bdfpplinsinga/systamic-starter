@@ -1,5 +1,8 @@
 title: Nieuws
 route: '/nieuws/{slug}'
+mount: nieuws
+taxonomies:
+  - categorie
 date: true
 date_behavior:
   past: public

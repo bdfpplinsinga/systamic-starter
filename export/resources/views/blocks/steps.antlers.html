@@ -1,0 +1,23 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" />
+
+        {{# Verticale tijdlijn op mobiel, horizontaal vanaf lg. De lijn loopt achter de nummers langs. #}}
+        <ol class="mt-12 grid gap-10 lg:grid-flow-col lg:auto-cols-fr lg:gap-8">
+            {{ block:steps }}
+                <li class="relative flex gap-6 lg:flex-col lg:gap-5">
+                    {{ unless last }}
+                        <span class="absolute top-12 bottom-[-2.5rem] left-6 w-px bg-ink/15 lg:top-6 lg:right-[-2rem] lg:bottom-auto lg:left-12 lg:h-px lg:w-auto" aria-hidden="true"></span>
+                    {{ /unless }}
+                    <span class="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-primary font-heading text-lg font-bold text-primary-contrast" aria-hidden="true">{{ count }}</span>
+                    <div class="pt-2.5 lg:pt-0">
+                        <x-heading as="h3" size="sm"><span class="sr-only">Stap {{ count }}: </span>{{ title }}</x-heading>
+                        {{ if description }}
+                            <p class="mt-2 text-ink-muted">{{ description }}</p>
+                        {{ /if }}
+                    </div>
+                </li>
+            {{ /block:steps }}
+        </ol>
+    </x-container>
+</x-section>

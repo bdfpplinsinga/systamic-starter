@@ -55,6 +55,24 @@ groups:
     _id: grpmar
     type: cookie-group
     enabled: true
+  -
+    identifier: external_media
+    name: 'Externe media'
+    description: 'Kaarten en andere inhoud van externe websites. Die websites kunnen je bezoek registreren.'
+    required: false
+    enabled_default: false
+    cookies:
+      -
+        cookie_identifier: openstreetmap
+        cookie_name: OpenStreetMap
+        cookie_description: 'Toont een kaart; laadt kaartbeelden van openstreetmap.org.'
+        cookie_lifetime: Sessie
+        _id: ext01
+        type: cookie
+        enabled: true
+    _id: grpext
+    type: cookie-group
+    enabled: true
 heading: 'Wij gebruiken cookies'
 description: 'We gebruiken cookies om de website goed te laten werken en om te begrijpen hoe hij wordt gebruikt. Je kunt zelf kiezen welke cookies je accepteert en je keuze later altijd aanpassen via "Cookie-instellingen" onderaan de pagina.'
 accept_all: 'Alles accepteren'

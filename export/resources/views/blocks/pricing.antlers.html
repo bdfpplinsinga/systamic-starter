@@ -1,0 +1,44 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" align="center" />
+
+        <ul class="mx-auto mt-12 grid max-w-md gap-8 lg:max-w-none lg:grid-flow-col lg:auto-cols-fr">
+            {{ block:plans }}
+                {{# Ternaries binnen een array-literal breken tw_merge; daarom eerst een losse variabele. #}}
+                {{ plan_class = highlighted ? 'bg-primary text-primary-contrast ring-primary [--color-accent:var(--color-primary-contrast)] lg:-my-4 lg:py-12' : 'bg-surface text-ink ring-ink/10' }}
+                {{ button_variant = highlighted ? 'secondary' : 'primary' }}
+                {{ muted_class = highlighted ? 'text-primary-contrast' : 'text-ink-muted' }}
+                <li class="{{ ['relative flex flex-col rounded-2xl p-8 ring-1', plan_class] | tw_merge }}">
+                    {{ if highlighted }}
+                        <p class="absolute -top-3 left-8 rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-secondary-contrast">Populair</p>
+                    {{ /if }}
+                    <x-heading as="h3" size="md">{{ name }}</x-heading>
+                    {{ if description }}
+                        <p class="{{ ['mt-2', muted_class] | tw_merge }}">{{ description }}</p>
+                    {{ /if }}
+                    {{ if price }}
+                        <p class="mt-6 flex items-baseline gap-2">
+                            <span class="font-heading text-4xl font-bold tracking-tight">{{ price }}</span>
+                            {{ if period }}<span class="{{ ['text-sm', muted_class] | tw_merge }}">{{ period }}</span>{{ /if }}
+                        </p>
+                    {{ /if }}
+                    {{ if features }}
+                        <ul class="mt-8 space-y-3">
+                            {{ features }}
+                                <li class="flex gap-3">
+                                    <x-icon name="check" class="mt-0.5 text-accent" />
+                                    {{ value }}
+                                </li>
+                            {{ /features }}
+                        </ul>
+                    {{ /if }}
+                    {{ if button:label && button:link }}
+                        <div class="mt-auto pt-8">
+                            <x-button :href="button:link" :variant="button_variant" class="w-full">{{ button:label }}</x-button>
+                        </div>
+                    {{ /if }}
+                </li>
+            {{ /block:plans }}
+        </ul>
+    </x-container>
+</x-section>

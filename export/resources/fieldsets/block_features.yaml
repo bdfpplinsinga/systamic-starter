@@ -1,0 +1,40 @@
+title: 'Blok - USP''s & cijfers'
+fields:
+  -
+    import: content
+  -
+    handle: items
+    field:
+      type: grid
+      display: Items
+      mode: stacked
+      add_row: 'Item toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: icon
+          field:
+            type: icon
+            display: Icoon
+            set: site
+            width: 25
+        -
+          handle: value
+          field:
+            type: text
+            display: Cijfer
+            instructions: 'Optioneel, bijvoorbeeld 250+ of 98%.'
+            width: 25
+        -
+          handle: title
+          field:
+            type: text
+            display: Titel
+            width: 50
+            validate:
+              - required
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Tekst

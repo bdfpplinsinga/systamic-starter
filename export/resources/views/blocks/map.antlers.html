@@ -1,0 +1,41 @@
+{{#
+    OpenStreetMap-kaart. De iframe laadt pas na toestemming voor "Externe media"; daarvoor staat
+    er een melding met een knop die de cookie-instellingen opent.
+#}}
+{{ delta = switch(
+    (block:zoom == "city")     => 0.05,
+    (block:zoom == "district") => 0.012,
+    ()                         => 0.004
+) }}
+{{ lat = block:latitude }}
+{{ lon = block:longitude }}
+{{ bbox = (lon - delta * 2) + ',' + (lat - delta) + ',' + (lon + delta * 2) + ',' + (lat + delta) }}
+
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" />
+
+        <div class="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-surface-muted ring-1 ring-ink/10 md:aspect-21/9">
+            {{ nocache }}
+                {{ cookie:allowed group="external_media" }}
+                    <iframe
+                        src="https://www.openstreetmap.org/export/embed.html?bbox={{ bbox }}&layer=mapnik&marker={{ lat }},{{ lon }}"
+                        title="Kaart{{ if block:heading }}: {{ block:heading }}{{ /if }}"
+                        loading="lazy"
+                        class="absolute inset-0 size-full border-0"
+                    ></iframe>
+                {{ /cookie:allowed }}
+                {{ cookie:denied group="external_media" }}
+                    <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center text-ink">
+                        <x-icon name="map-pin" size="xl" class="text-accent" />
+                        <p class="max-w-sm">Deze kaart komt van OpenStreetMap. Geef toestemming voor externe media om hem te tonen.</p>
+                        <x-button variant="secondary" size="sm" onclick="CookieDialog.showDialog()">Cookie-instellingen</x-button>
+                    </div>
+                {{ /cookie:denied }}
+            {{ /nocache }}
+        </div>
+        <p class="mt-3 text-sm text-ink-muted">
+            <a href="https://www.openstreetmap.org/?mlat={{ lat }}&mlon={{ lon }}#map=17/{{ lat }}/{{ lon }}" class="underline hover:text-accent">Bekijk op OpenStreetMap</a>
+        </p>
+    </x-container>
+</x-section>

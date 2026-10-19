@@ -11,6 +11,12 @@
                 </ul>
             </nav>
 
+            <form action="/zoeken" method="get" role="search" class="relative">
+                <label for="header-search" class="sr-only">Zoeken</label>
+                <input id="header-search" type="search" name="q" placeholder="Zoeken" class="w-40 rounded-full border border-ink/20 bg-surface py-1.5 pr-3 pl-9 text-sm placeholder:text-ink-muted focus:border-primary focus:outline-2 focus:outline-primary/25">
+                <x-icon name="magnifying-glass" size="sm" class="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-muted" />
+            </form>
+
             {{ if general:buttons }}
                 <div class="flex items-center gap-3">
                     {{ general:buttons }}
@@ -34,6 +40,11 @@
                     <li><a href="{{ url }}" class="block rounded-lg px-3 py-2 font-semibold hover:bg-surface-muted">{{ title }}</a></li>
                 {{ /links }}{{ /nav:main }}
             </ul>
+            <form action="/zoeken" method="get" role="search" class="relative px-3">
+                <label for="mobile-search" class="sr-only">Zoeken</label>
+                <input id="mobile-search" type="search" name="q" placeholder="Zoeken" class="w-full rounded-full border border-ink/20 bg-surface py-2 pr-3 pl-10 placeholder:text-ink-muted focus:border-primary focus:outline-2 focus:outline-primary/25">
+                <x-icon name="magnifying-glass" size="sm" class="pointer-events-none absolute top-1/2 left-6.5 -translate-y-1/2 text-ink-muted" />
+            </form>
             {{ if general:buttons }}
                 <div class="flex flex-wrap gap-3 px-3">
                     {{ general:buttons }}

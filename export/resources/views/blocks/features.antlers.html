@@ -1,0 +1,23 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" align="center" />
+
+        <ul class="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {{ block:items }}
+                <li class="text-center">
+                    {{ if icon }}
+                        {{# Het icoonveld geeft een inline SVG; de wrapper bepaalt grootte en kleur. #}}
+                        <div class="mx-auto mb-5 flex size-14 items-center justify-center rounded-full bg-accent/10 text-accent *:size-7" aria-hidden="true">{{ icon }}</div>
+                    {{ /if }}
+                    {{ if value }}
+                        <p class="font-heading text-4xl font-bold tracking-tight text-accent md:text-5xl">{{ value }}</p>
+                    {{ /if }}
+                    <x-heading as="h3" size="sm" class="mt-2">{{ title }}</x-heading>
+                    {{ if description }}
+                        <p class="mt-2 text-ink-muted">{{ description }}</p>
+                    {{ /if }}
+                </li>
+            {{ /block:items }}
+        </ul>
+    </x-container>
+</x-section>

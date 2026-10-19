@@ -7,6 +7,8 @@
     <x-container>
         <x-heading as="h1" size="3xl">{{ title }}</x-heading>
 
+        {{ partial:news/categories }}
+
         {{ collection:news paginate="9" as="posts" }}
             {{ if posts }}
                 <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -18,17 +20,13 @@
                 <p class="mt-8 text-ink-muted">Er zijn nog geen berichten.</p>
             {{ /if }}
 
-            {{ paginate }}
-                {{ if prev_page || next_page }}
-                    <nav aria-label="Paginering" class="mt-12 flex items-center justify-between">
-                        {{ if prev_page }}<x-button :href="prev_page" variant="secondary" size="sm">Vorige</x-button>{{ else }}<span></span>{{ /if }}
-                        <span class="text-sm text-ink-muted">Pagina {{ current_page }} van {{ total_pages }}</span>
-                        {{ if next_page }}<x-button :href="next_page" variant="secondary" size="sm">Volgende</x-button>{{ else }}<span></span>{{ /if }}
-                    </nav>
-                {{ /if }}
-            {{ /paginate }}
+            {{ partial:news/pagination }}
         {{ /collection:news }}
     </x-container>
 </x-section>
 
 {{ partial:page_builder }}
+
+{{ push:head }}
+    <link rel="alternate" type="application/rss+xml" title="{{ title }}" href="/nieuws/feed">
+{{ /push:head }}

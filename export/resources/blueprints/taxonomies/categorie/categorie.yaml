@@ -1,0 +1,34 @@
+title: Categorie
+tabs:
+  main:
+    display: Inhoud
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Titel
+              localizable: true
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Omschrijving
+              instructions: 'Optioneel, staat bovenaan de categoriepagina.'
+              localizable: true
+              listable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

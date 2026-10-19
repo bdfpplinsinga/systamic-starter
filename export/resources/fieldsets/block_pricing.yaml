@@ -1,0 +1,67 @@
+title: 'Blok - Prijzen'
+fields:
+  -
+    import: content
+  -
+    handle: plans
+    field:
+      type: grid
+      display: Pakketten
+      mode: stacked
+      max_rows: 4
+      add_row: 'Pakket toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: name
+          field:
+            type: text
+            display: Naam
+            width: 50
+            validate:
+              - required
+        -
+          handle: highlighted
+          field:
+            type: toggle
+            display: Uitlichten
+            instructions: 'Bijvoorbeeld het populairste pakket.'
+            width: 50
+        -
+          handle: price
+          field:
+            type: text
+            display: Prijs
+            placeholder: '€ 49'
+            width: 50
+        -
+          handle: period
+          field:
+            type: text
+            display: Periode
+            placeholder: 'per maand'
+            width: 50
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Omschrijving
+        -
+          handle: features
+          field:
+            type: list
+            display: 'Wat zit erin'
+        -
+          handle: button
+          field:
+            type: group
+            display: Button
+            fullscreen: false
+            fields:
+              -
+                import: button
+                config:
+                  label:
+                    validate: []
+                  link:
+                    validate: []

@@ -1,6 +1,11 @@
 export_paths:
+  - .prettierrc
   - CLAUDE.md
+  - app/Providers/AppServiceProvider.php
+  - app/Search
   - config/statamic/assets.php
+  - config/statamic/search.php
+  - config/statamic/static_caching.php
   - content/assets
   - content/collections/pages.yaml
   - content/collections/pages/home.md
@@ -12,6 +17,7 @@ export_paths:
   - content/navigation
   - content/trees
   - lang
+  - public/assets/set-previews
   - resources/blueprints/assets
   - resources/blueprints/collections/pages
   - resources/blueprints/forms
@@ -31,6 +37,9 @@ export_paths:
   - resources/views/partials
   - resources/views/default.antlers.html
   - resources/views/layout.antlers.html
+  - resources/views/robots.antlers.html
+  - resources/views/search.antlers.html
+  - resources/views/sitemap.antlers.html
   - resources/views/styleguide.antlers.html
   - routes/web.php
   - package.json
@@ -45,13 +54,15 @@ modules:
     dependencies:
       statamic/seo-pro: ^7.15
   news:
-    prompt: 'Nieuws installeren? (collectie op /nieuws met overzicht en berichtpagina)'
+    prompt: 'Nieuws installeren? (collectie op /nieuws met categorieën, RSS-feed en deelknoppen)'
     default: false
     export_paths:
       - content/collections/news.yaml
       - content/collections/news
       - content/collections/pages/nieuws.md
+      - content/taxonomies
       - resources/blueprints/collections/news
+      - resources/blueprints/taxonomies
       - resources/views/news
   demo:
     prompt: 'Demopagina met alle blokken en voorbeeldafbeeldingen installeren?'

@@ -14,12 +14,15 @@ class StarterKitPostInstall
     public function handle($console)
     {
         $this->publishCookieDialogAssets($console);
+        $this->removeStaticRobotsTxt();
 
         foreach ($this->modulePages as $entry => $message) {
             if ($this->addPageToTrees($entry)) {
                 $console->line($message);
             }
         }
+
+        $this->buildSearchIndex($console);
 
         $console->newLine();
         $console->info('Systamic is geïnstalleerd.');
@@ -44,6 +47,30 @@ class StarterKitPostInstall
 
         if ($result->failed()) {
             $console->warn('Cookie Dialog assets niet gepubliceerd. Draai: php artisan vendor:publish --tag=statamic-cookie-dialog');
+        }
+    }
+
+    /**
+     * robots.txt komt uit een route (alleen productie mag geïndexeerd worden). Het statische
+     * bestand van Laravel zou die route overschaduwen.
+     */
+    protected function removeStaticRobotsTxt(): void
+    {
+        if (file_exists($path = public_path('robots.txt'))) {
+            unlink($path);
+        }
+    }
+
+    /**
+     * Vult de zoekindex met de meegeleverde content. Daarna houdt Statamic hem zelf bij.
+     */
+    protected function buildSearchIndex($console): void
+    {
+        $result = \Illuminate\Support\Facades\Process::path(base_path())
+            ->run([PHP_BINARY, 'please', 'search:update', '--all']);
+
+        if ($result->failed()) {
+            $console->warn('Zoekindex niet opgebouwd. Draai: php please search:update --all');
         }
     }
 

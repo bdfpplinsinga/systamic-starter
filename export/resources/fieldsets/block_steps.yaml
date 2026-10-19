@@ -1,0 +1,25 @@
+title: 'Blok - Stappen'
+fields:
+  -
+    import: content
+  -
+    handle: steps
+    field:
+      type: grid
+      display: Stappen
+      mode: stacked
+      add_row: 'Stap toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: title
+          field:
+            type: text
+            display: Titel
+            validate:
+              - required
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Tekst

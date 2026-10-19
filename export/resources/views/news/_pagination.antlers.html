@@ -1,0 +1,10 @@
+{{# Paginering voor nieuwsoverzichten. Verwacht de paginate-variabelen van collection of entries. #}}
+{{ paginate }}
+    {{ if prev_page || next_page }}
+        <nav aria-label="Paginering" class="mt-12 flex items-center justify-between">
+            {{ if prev_page }}<x-button :href="prev_page" variant="secondary" size="sm">Vorige</x-button>{{ else }}<span></span>{{ /if }}
+            <span class="text-sm text-ink-muted">Pagina {{ current_page }} van {{ total_pages }}</span>
+            {{ if next_page }}<x-button :href="next_page" variant="secondary" size="sm">Volgende</x-button>{{ else }}<span></span>{{ /if }}
+        </nav>
+    {{ /if }}
+{{ /paginate }}

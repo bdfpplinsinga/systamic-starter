@@ -1,0 +1,30 @@
+{{# Berichten in één categorie, op /nieuws/categorie/{slug}. #}}
+<x-container class="pt-6">
+    <x-breadcrumbs />
+</x-container>
+
+<x-section>
+    <x-container>
+        <p class="mb-3 text-sm font-semibold tracking-wide text-accent uppercase">Categorie</p>
+        <x-heading as="h1" size="3xl">{{ title }}</x-heading>
+        {{ if description }}
+            <p class="mt-6 max-w-2xl text-xl text-ink-muted">{{ description }}</p>
+        {{ /if }}
+
+        {{ partial:news/categories }}
+
+        {{ entries paginate="9" as="posts" }}
+            {{ if posts }}
+                <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    {{ posts }}
+                        <li><x-entry-card :url="url" :title="title" :date="date" :image="image" :excerpt="excerpt" class="h-full" /></li>
+                    {{ /posts }}
+                </ul>
+            {{ else }}
+                <p class="mt-8 text-ink-muted">Er zijn nog geen berichten in deze categorie.</p>
+            {{ /if }}
+
+            {{ partial:news/pagination }}
+        {{ /entries }}
+    </x-container>
+</x-section>

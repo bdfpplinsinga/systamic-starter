@@ -1,0 +1,21 @@
+{{# RSS-feed van het nieuws op /nieuws/feed (route in routes/web.php). #}}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ (company:company_name ?? site:name) | entities }} - Nieuws</title>
+        <link>{{ site:permalink | ensure_right('/') }}nieuws</link>
+        <description>Het laatste nieuws van {{ (company:company_name ?? site:name) | entities }}</description>
+        <language>{{ site:short_locale }}</language>
+        <atom:link href="{{ site:permalink | ensure_right('/') }}nieuws/feed" rel="self" type="application/rss+xml" />
+        {{ collection:news limit="20" }}
+            <item>
+                <title>{{ title | entities }}</title>
+                <link>{{ permalink }}</link>
+                <guid isPermaLink="true">{{ permalink }}</guid>
+                <pubDate>{{ date format="r" }}</pubDate>
+                {{ if excerpt }}<description>{{ excerpt | entities }}</description>{{ /if }}
+                {{ categorie }}<category>{{ title | entities }}</category>{{ /categorie }}
+            </item>
+        {{ /collection:news }}
+    </channel>
+</rss>

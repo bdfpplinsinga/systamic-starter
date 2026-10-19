@@ -1,0 +1,23 @@
+title: 'Blok - Tabs'
+fields:
+  -
+    import: content
+  -
+    handle: tabs
+    field:
+      type: grid
+      display: Tabs
+      mode: stacked
+      min_rows: 2
+      add_row: 'Tab toevoegen'
+      localizable: true
+      fields:
+        -
+          handle: tab
+          field:
+            type: text
+            display: Tabtitel
+            validate:
+              - required
+        -
+          import: text

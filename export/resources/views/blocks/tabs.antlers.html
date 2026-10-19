@@ -1,0 +1,60 @@
+{{#
+    Toegankelijke tabs (WAI-ARIA tabs pattern): pijltjestoetsen, Home en End wisselen van tab,
+    alleen de actieve tab zit in de tabvolgorde.
+#}}
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" />
+
+        <div
+            x-data="{
+                active: 0,
+                select(index) {
+                    const tabs = this.$refs.tablist.querySelectorAll('[role=tab]');
+                    this.active = (index + tabs.length) % tabs.length;
+                    tabs[this.active].focus();
+                },
+            }"
+            class="mt-10"
+        >
+            <div
+                x-ref="tablist"
+                role="tablist"
+                aria-label="{{ block:heading ?? 'Tabs' }}"
+                class="flex gap-1 overflow-x-auto border-b border-ink/15"
+                x-on:keydown.right.prevent="select(active + 1)"
+                x-on:keydown.left.prevent="select(active - 1)"
+                x-on:keydown.home.prevent="select(0)"
+                x-on:keydown.end.prevent="select(-1)"
+            >
+                {{ block:tabs }}
+                    <button
+                        type="button"
+                        role="tab"
+                        id="tab-{{ block:id }}-{{ index }}"
+                        aria-controls="panel-{{ block:id }}-{{ index }}"
+                        x-bind:aria-selected="active === {{ index }}"
+                        x-bind:tabindex="active === {{ index }} ? 0 : -1"
+                        x-on:click="active = {{ index }}"
+                        class="-mb-px shrink-0 border-b-2 px-4 py-3 font-semibold whitespace-nowrap transition-colors aria-selected:border-accent aria-selected:text-accent aria-[selected=false]:border-transparent aria-[selected=false]:text-ink-muted aria-[selected=false]:hover:text-current"
+                        {{ if first }}aria-selected="true" tabindex="0"{{ else }}aria-selected="false" tabindex="-1"{{ /if }}
+                    >{{ tab }}</button>
+                {{ /block:tabs }}
+            </div>
+
+            {{ block:tabs }}
+                <div
+                    role="tabpanel"
+                    id="panel-{{ block:id }}-{{ index }}"
+                    aria-labelledby="tab-{{ block:id }}-{{ index }}"
+                    tabindex="0"
+                    x-show="active === {{ index }}"
+                    {{ unless first }}x-cloak{{ /unless }}
+                    class="pt-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                >
+                    <x-prose>{{ text }}</x-prose>
+                </div>
+            {{ /block:tabs }}
+        </div>
+    </x-container>
+</x-section>

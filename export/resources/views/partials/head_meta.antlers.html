@@ -1,8 +1,11 @@
 {{#
     Meta tags, favicon, gestructureerde data en scripts voor in <head>.
-    Met SEO Pro geïnstalleerd verzorgt die titel, description en social sharing,
+    Buiten productie altijd noindex. Met SEO Pro geïnstalleerd verzorgt die titel, description en social sharing,
     anders een eenvoudige fallback op basis van de pagina en de global "Algemeen".
 #}}
+{{ if environment != 'production' }}
+    <meta name="robots" content="noindex, nofollow">
+{{ /if }}
 {{ installed:statamic/seo-pro }}
     {{ seo_pro:meta }}
 {{ /installed:statamic/seo-pro }}

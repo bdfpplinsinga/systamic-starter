@@ -1,0 +1,21 @@
+{
+    "printWidth": 120,
+    "tabWidth": 4,
+    "plugins": ["prettier-plugin-antlers", "prettier-plugin-tailwindcss"],
+    "tailwindStylesheet": "./resources/css/site.css",
+    "tailwindFunctions": ["tw_merge"],
+    "overrides": [
+        {
+            "files": ["*.antlers.html"],
+            "options": { "parser": "antlers" }
+        },
+        {
+            "files": ["*.js"],
+            "options": { "singleQuote": true }
+        },
+        {
+            "files": ["*.yaml", "*.yml"],
+            "options": { "tabWidth": 2 }
+        }
+    ]
+}

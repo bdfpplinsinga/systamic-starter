@@ -1,0 +1,7 @@
+{{# Alleen productie mag geïndexeerd worden; test- en lokale omgevingen blokkeren alles. #}}
+User-agent: *
+{{ if environment == 'production' }}Disallow:
+
+Sitemap: {{ site:permalink | ensure_right('/') }}sitemap.xml
+{{ else }}Disallow: /
+{{ /if }}
