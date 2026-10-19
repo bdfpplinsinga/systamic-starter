@@ -50,6 +50,17 @@
     --tw-prose-bullets: var(--color-ink-muted);
     --tw-prose-quotes: currentColor;
     --tw-prose-quote-borders: var(--color-accent);
+
+    /* Compactere lijsten: Bard zet elk item in een <p>, wat standaard extra marge geeft. */
+    & li {
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
+    }
+
+    & li > p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 
 /* Formuliervelden. Statamic rendert de velden zelf ({{ field }}); hier krijgen ze hun stijl. */
