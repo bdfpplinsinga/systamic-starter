@@ -58,5 +58,6 @@ composer export          # schrijft naar ../systamic-starter
 cd ../systamic-starter
 git diff                 # controleren
 git commit -am "..." && git push
-git tag v0.x.0 && git push origin v0.x.0   # nieuwe installs pakken de laatste tag
+# Een GitHub Action zet bij elke push een nieuwe patch-tag (v0.1.1, v0.1.2, ...).
+# Voor een grotere stap tag je zelf, bijv. v0.2.0; daarna telt de action verder.
 ```
