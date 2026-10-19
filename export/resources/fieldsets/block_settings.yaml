@@ -1,10 +1,13 @@
 title: 'Groep - Blokinstellingen'
 fields:
   -
-    handle: settings_section
+    handle: show_settings
     field:
-      type: section
-      display: Instellingen
+      type: revealer
+      display: Blokinstellingen
+      mode: toggle
+      input_label: 'Achtergrond en anker tonen'
+      listable: false
   -
     handle: background
     field:
@@ -17,6 +20,8 @@ fields:
       default: none
       localizable: true
       width: 50
+      if:
+        show_settings: 'equals true'
   -
     handle: anchor
     field:
@@ -28,3 +33,5 @@ fields:
         - alpha_dash
       localizable: true
       width: 50
+      if:
+        show_settings: 'equals true'
