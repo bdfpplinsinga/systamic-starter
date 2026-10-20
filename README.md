@@ -49,6 +49,7 @@ Vul in het control panel de globals in (Bedrijfsgegevens, Social media, Algemeen
 - **Juridische pagina's** (privacyverklaring, algemene voorwaarden) in een eigen menu onderaan de footer, plus kruimelpad.
 - **Fieldsets in drie lagen**: velden → groepen (`content`, `block_settings`) → blokken.
 - **Design tokens** in `resources/css/site.css` (`@theme`). Pas die per project aan.
+- **Dashboardwidget** "Afbeeldingen zonder alt-tekst": toont welke afbeeldingen nog een alt-tekst missen, met een link naar de editor.
 - **`/styleguide`** (alleen lokaal) met alle componenten.
 
 De conventies staan in `CLAUDE.md`.

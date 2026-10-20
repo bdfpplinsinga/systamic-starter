@@ -41,6 +41,7 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
 - **SEO**: `partials/head_meta` uses SEO Pro when it is installed (`{{ installed:statamic/seo-pro }}`), otherwise a plain fallback that uses `general:share_image` for og:image. With SEO Pro, set the default share image in its site defaults. Nothing else may assume SEO Pro is installed.
 - **Assets**: one container, `assets` (`public/assets`). Glide presets for `<x-picture>` are in `config/statamic/assets.php`.
 - **Slider**: `<x-slider label="…" per_view="3">` with `<x-slide>` children. Swiper (with A11y, Keyboard, Navigation, Pagination) is loaded on demand from `resources/js/slider.js`, only on pages that have a slider. The gallery block has a `layout` option (grid or slider).
+- **Dashboard**: widget `images_missing_alt` (`app/Widgets/ImagesMissingAlt.php`, Blade view in `resources/views/widgets`) lists images without alt text; configured in `config/statamic/cp.php` (`container`, `limit`, `exclude` folders, default `set-previews`).
 - `/styleguide` (local env only) shows every component. Add a new component there too.
 - **Quality**: `.prettierrc` (Antlers + Tailwind plugins; `npm run format` covers JS and CSS). The dev site runs pa11y (axe, WCAG 2 AA) on the URLs in `.pa11yci.json` in a GitHub Action; keep it green.
 - Labels in the control panel and front end are in Dutch.
