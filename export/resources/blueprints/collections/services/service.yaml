@@ -1,0 +1,56 @@
+title: Dienst
+tabs:
+  main:
+    display: Inhoud
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Titel
+              localizable: true
+              validate:
+                - required
+          -
+            handle: excerpt
+            field:
+              type: textarea
+              display: Samenvatting
+              instructions: 'Korte omschrijving, ook gebruikt in het overzicht.'
+              character_limit: 200
+              localizable: true
+              listable: false
+          -
+            handle: icon
+            field:
+              type: icon
+              display: Icoon
+              set: site
+              instructions: 'Getoond in het overzicht als er geen afbeelding is.'
+              listable: false
+          -
+            import: image
+          -
+            import: page_builder
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta description'
+              instructions: 'Wordt gebruikt als SEO Pro niet is geïnstalleerd.'
+              character_limit: 160
+              localizable: true
+              listable: false

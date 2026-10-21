@@ -1,0 +1,44 @@
+{{# Overzicht van alle diensten. De pagina "Diensten" gebruikt dit template; de volgorde bepaal je in de collectie Diensten. #}}
+<x-container class="pt-6">
+    <x-breadcrumbs />
+</x-container>
+
+<x-section>
+    <x-container>
+        <x-heading as="h1" size="3xl">{{ title }}</x-heading>
+
+        {{ collection:services as="services" }}
+            {{ if services }}
+                <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    {{ services }}
+                        <li class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface text-ink ring-1 ring-ink/10">
+                            {{ if image }}
+                                <div class="aspect-3/2 overflow-hidden bg-surface-muted">
+                                    <x-picture :image="image" cover sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" alt="" class="transition-transform duration-300 group-hover:scale-105" />
+                                </div>
+                            {{ /if }}
+                            <div class="flex grow flex-col p-6">
+                                {{ if icon && !image }}
+                                    <div class="mb-5 flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent *:size-6" aria-hidden="true">{{ icon }}</div>
+                                {{ /if }}
+                                <x-heading as="h2" size="sm">
+                                    <a href="{{ url }}" class="after:absolute after:inset-0">{{ title }}</a>
+                                </x-heading>
+                                {{ if excerpt }}
+                                    <p class="mt-3 text-ink-muted">{{ excerpt }}</p>
+                                {{ /if }}
+                                <span class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-accent" aria-hidden="true">
+                                    Lees meer <x-icon name="arrow-right" size="sm" class="transition-transform group-hover:translate-x-1" />
+                                </span>
+                            </div>
+                        </li>
+                    {{ /services }}
+                </ul>
+            {{ else }}
+                <p class="mt-8 text-ink-muted">Er zijn nog geen diensten.</p>
+            {{ /if }}
+        {{ /collection:services }}
+    </x-container>
+</x-section>
+
+{{ partial:page_builder }}

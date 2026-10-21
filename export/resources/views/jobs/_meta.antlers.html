@@ -1,0 +1,7 @@
+{{# Locatie, uren, dienstverband en salaris van een vacature als rij met iconen. #}}
+<ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted">
+    {{ if location }}<li class="flex items-center gap-1.5"><x-icon name="map-pin" size="sm" /><span class="sr-only">Locatie: </span>{{ location }}</li>{{ /if }}
+    {{ if hours }}<li class="flex items-center gap-1.5"><x-icon name="clock" size="sm" /><span class="sr-only">Uren: </span>{{ hours }}</li>{{ /if }}
+    {{ if employment_type }}<li class="flex items-center gap-1.5"><x-icon name="document-text" size="sm" /><span class="sr-only">Dienstverband: </span>{{ employment_type:label }}</li>{{ /if }}
+    {{ if salary }}<li class="flex items-center gap-1.5"><x-icon name="currency-euro" size="sm" /><span class="sr-only">Salaris: </span>{{ salary }}</li>{{ /if }}
+</ul>

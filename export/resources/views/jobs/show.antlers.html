@@ -1,0 +1,59 @@
+<x-container class="pt-6">
+    <x-breadcrumbs />
+</x-container>
+
+<article>
+    <x-section spacing="sm">
+        <x-container width="narrow">
+            <p class="mb-3 text-sm font-semibold tracking-wide text-accent uppercase">Vacature</p>
+            <x-heading as="h1" size="3xl">{{ title }}</x-heading>
+            <div class="mt-6">{{ partial:jobs/meta }}</div>
+            {{ if excerpt }}
+                <p class="mt-6 text-xl text-ink-muted">{{ excerpt }}</p>
+            {{ /if }}
+            {{ if closing_date }}
+                <p class="mt-4 text-sm text-ink-muted">Reageren kan tot en met {{ closing_date | iso_format('D MMMM YYYY') }}.</p>
+            {{ /if }}
+        </x-container>
+        {{ if image }}
+            <x-container class="mt-10">
+                <div class="aspect-video overflow-hidden rounded-2xl">
+                    <x-picture :image="image" cover eager sizes="(min-width: 1280px) 1280px, 100vw" />
+                </div>
+            </x-container>
+        {{ /if }}
+    </x-section>
+
+    {{ partial:page_builder }}
+
+    <x-section background="muted" spacing="sm">
+        <x-container width="narrow" class="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+                <x-heading as="h2" size="lg">Interesse?</x-heading>
+                <p class="mt-2 text-ink-muted">We horen graag van je.</p>
+            </div>
+            <x-button :href="apply_link ?? '/contact'">Solliciteer direct</x-button>
+        </x-container>
+    </x-section>
+
+    <x-container width="narrow" class="py-12">
+        <x-share :url="permalink" :title="title" />
+    </x-container>
+</article>
+
+{{ push:head }}
+{{# Google for Jobs: https://developers.google.com/search/docs/appearance/structured-data/job-posting #}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": {{ title | to_json }},
+    "description": {{ (excerpt ?? title) | to_json }},
+    "datePosted": {{ date | format('Y-m-d') | to_json }}{{ if closing_date }},
+    "validThrough": {{ closing_date | format('Y-m-d') | to_json }}{{ /if }}{{ if employment_type }},
+    "employmentType": {{ employment_type:value | upper | to_json }}{{ /if }},
+    "hiringOrganization": { "@type": "Organization", "name": {{ (company:company_name ?? site:name) | to_json }}, "sameAs": {{ site:permalink | to_json }} }{{ if location }},
+    "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": {{ location | to_json }}, "addressCountry": "NL" } }{{ /if }}
+}
+</script>
+{{ /push:head }}

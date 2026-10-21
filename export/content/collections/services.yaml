@@ -1,0 +1,7 @@
+title: Diensten
+route: '/diensten/{slug}'
+mount: diensten
+structure:
+  max_depth: 1
+template: services/show
+layout: layout

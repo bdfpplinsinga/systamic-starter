@@ -1,0 +1,32 @@
+{{# Overzicht van open vacatures. De pagina "Vacatures" gebruikt dit template. Vacatures na hun sluitingsdatum vallen weg. #}}
+<x-container class="pt-6">
+    <x-breadcrumbs />
+</x-container>
+
+<x-section>
+    <x-container width="narrow">
+        <x-heading as="h1" size="3xl">{{ title }}</x-heading>
+
+        {{ collection:jobs query_scope="open_jobs" as="open_jobs" }}
+            {{ if open_jobs }}
+                <ul class="mt-12 space-y-6">
+                    {{ open_jobs }}
+                        <li class="group relative rounded-2xl bg-surface p-6 text-ink ring-1 ring-ink/10 transition-shadow hover:shadow-lg md:p-8">
+                            <x-heading as="h2" size="md">
+                                <a href="{{ url }}" class="after:absolute after:inset-0">{{ title }}</a>
+                            </x-heading>
+                            <div class="mt-3">{{ partial:jobs/meta }}</div>
+                            {{ if excerpt }}
+                                <p class="mt-4 text-ink-muted">{{ excerpt }}</p>
+                            {{ /if }}
+                        </li>
+                    {{ /open_jobs }}
+                </ul>
+            {{ else }}
+                <p class="mt-8 text-ink-muted">Er zijn op dit moment geen vacatures. Een open sollicitatie is altijd welkom.</p>
+            {{ /if }}
+        {{ /collection:jobs }}
+    </x-container>
+</x-section>
+
+{{ partial:page_builder }}

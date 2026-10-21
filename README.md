@@ -16,12 +16,15 @@ Of in een bestaande, verse Statamic installatie:
 php please starter-kit:install bdfpplinsinga/systamic-starter
 ```
 
-Tijdens de installatie krijg je drie vragen:
+Tijdens de installatie kies je welke modules je wilt:
 
 | Module | Standaard | Wat het doet |
 |---|---|---|
 | SEO Pro | ja | Installeert `statamic/seo-pro` (betaalde addon). Voegt een SEO-tab toe aan elke pagina. Zonder SEO Pro valt de site terug op titel + meta description. |
 | Nieuws | nee | Collectie `news` met overzicht op `/nieuws`, categorieën (`/nieuws/categorie/...`), een RSS-feed op `/nieuws/feed`, deelknoppen en drie voorbeeldberichten. |
+| Vacatures | nee | Collectie `jobs` met overzicht op `/vacatures` en een pagina per vacature: locatie, uren, dienstverband, salaris, sluitingsdatum, sollicitatieknop en JobPosting-data voor Google for Jobs. Vacatures na hun sluitingsdatum verdwijnen van het overzicht. |
+| Diensten | nee | Collectie `services` met overzicht op `/diensten` en een pagina per dienst (icoon of afbeelding, page builder). Volgorde bepaal je met slepen. |
+| Team | nee | Collectie `team` met teamleden (foto, functie, bio, e-mail, telefoon, LinkedIn), overzicht op `/team`. Teamleden hebben geen eigen pagina. |
 | Demo | nee | Voegt de pagina `/blokken` toe met alle blokken en voorbeeldafbeeldingen. |
 
 Daarna:

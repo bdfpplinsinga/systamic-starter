@@ -8,6 +8,9 @@ class StarterKitPostInstall
      */
     protected array $modulePages = [
         'nieuws' => 'Nieuws toegevoegd op /nieuws.',
+        'vacatures' => 'Vacatures toegevoegd op /vacatures.',
+        'diensten' => 'Diensten toegevoegd op /diensten.',
+        'team' => 'Team toegevoegd op /team.',
         'blokken' => 'Demopagina toegevoegd op /blokken.',
     ];
 

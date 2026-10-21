@@ -17,7 +17,8 @@ export_paths:
   - content/cookie-dialog
   - content/globals
   - content/navigation
-  - content/trees
+  - content/trees/collections/pages.yaml
+  - content/trees/navigation
   - lang
   - public/assets/set-previews
   - resources/blueprints/assets
@@ -67,6 +68,36 @@ modules:
       - resources/blueprints/collections/news
       - resources/blueprints/taxonomies
       - resources/views/news
+  jobs:
+    prompt: 'Vacatures installeren? (collectie op /vacatures met sluitingsdatum en Google for Jobs-data)'
+    default: false
+    export_paths:
+      - app/Scopes/OpenJobs.php
+      - content/collections/jobs.yaml
+      - content/collections/jobs
+      - content/collections/pages/vacatures.md
+      - resources/blueprints/collections/jobs
+      - resources/views/jobs
+  services:
+    prompt: 'Diensten installeren? (collectie op /diensten met icoon per dienst)'
+    default: false
+    export_paths:
+      - content/collections/services.yaml
+      - content/collections/services
+      - content/collections/pages/diensten.md
+      - content/trees/collections/services.yaml
+      - resources/blueprints/collections/services
+      - resources/views/services
+  team:
+    prompt: 'Team installeren? (collectie met teamleden, overzicht op /team)'
+    default: false
+    export_paths:
+      - content/collections/team.yaml
+      - content/collections/team
+      - content/collections/pages/team.md
+      - content/trees/collections/team.yaml
+      - resources/blueprints/collections/team
+      - resources/views/team
   demo:
     prompt: 'Demopagina met alle blokken en voorbeeldafbeeldingen installeren?'
     default: false

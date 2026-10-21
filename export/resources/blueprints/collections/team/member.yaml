@@ -1,0 +1,67 @@
+title: Teamlid
+tabs:
+  main:
+    display: Inhoud
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Naam
+              localizable: true
+              validate:
+                - required
+          -
+            handle: role
+            field:
+              type: text
+              display: Functie
+              localizable: true
+          -
+            import: image
+          -
+            handle: bio
+            field:
+              type: textarea
+              display: 'Korte bio'
+              localizable: true
+              listable: false
+      -
+        display: Contact
+        fields:
+          -
+            handle: email
+            field:
+              type: text
+              input_type: email
+              display: E-mailadres
+              width: 50
+              listable: false
+          -
+            handle: phone
+            field:
+              type: text
+              input_type: tel
+              display: Telefoonnummer
+              width: 50
+              listable: false
+          -
+            handle: linkedin
+            field:
+              type: text
+              input_type: url
+              display: LinkedIn-profiel
+              listable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

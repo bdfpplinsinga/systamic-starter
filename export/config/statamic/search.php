@@ -29,6 +29,7 @@ return [
         'default' => [
             'driver' => 'local',
             'searchables' => ['collection:*'],
+            'filter' => \App\Search\HasUrl::class,
             'fields' => ['title', 'excerpt', 'meta_description', 'page_builder'],
             'transformers' => [
                 'page_builder' => \App\Search\PageBuilderText::class,

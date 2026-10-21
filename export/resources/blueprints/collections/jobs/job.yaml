@@ -1,0 +1,105 @@
+title: Vacature
+tabs:
+  main:
+    display: Inhoud
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Functietitel
+              localizable: true
+              validate:
+                - required
+          -
+            handle: excerpt
+            field:
+              type: textarea
+              display: Samenvatting
+              instructions: 'Korte intro, ook gebruikt in het overzicht en voor Google.'
+              character_limit: 200
+              localizable: true
+              listable: false
+          -
+            import: image
+          -
+            import: page_builder
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: date
+            field:
+              type: date
+              display: Publicatiedatum
+              required: true
+              validate:
+                - required
+      -
+        display: Details
+        fields:
+          -
+            handle: location
+            field:
+              type: text
+              display: Locatie
+              placeholder: Amsterdam
+              localizable: true
+          -
+            handle: hours
+            field:
+              type: text
+              display: Uren
+              placeholder: '32 - 40 uur'
+              localizable: true
+          -
+            handle: employment_type
+            field:
+              type: select
+              display: Dienstverband
+              options:
+                full_time: Fulltime
+                part_time: Parttime
+                temporary: Tijdelijk
+                internship: Stage
+                contractor: Freelance
+              localizable: true
+          -
+            handle: salary
+            field:
+              type: text
+              display: Salaris
+              placeholder: '€ 3.000 - € 4.000 per maand'
+              localizable: true
+          -
+            handle: closing_date
+            field:
+              type: date
+              display: Sluitingsdatum
+              instructions: 'Na deze datum verdwijnt de vacature uit het overzicht. Leeg laten als hij open blijft.'
+          -
+            handle: apply_link
+            field:
+              type: link
+              display: Sollicitatielink
+              instructions: 'Bijvoorbeeld een formulier of mailto:. Leeg laten om naar de contactpagina te verwijzen.'
+              localizable: true
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta description'
+              instructions: 'Wordt gebruikt als SEO Pro niet is geïnstalleerd.'
+              character_limit: 160
+              localizable: true
+              listable: false

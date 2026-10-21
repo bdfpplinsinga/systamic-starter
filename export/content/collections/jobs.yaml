@@ -1,0 +1,10 @@
+title: Vacatures
+route: '/vacatures/{slug}'
+mount: vacatures
+date: true
+date_behavior:
+  past: public
+  future: private
+sort_dir: desc
+template: jobs/show
+layout: layout

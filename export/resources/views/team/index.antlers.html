@@ -1,0 +1,24 @@
+{{# Teamoverzicht. De pagina "Team" gebruikt dit template; de volgorde bepaal je in de collectie Team. #}}
+<x-container class="pt-6">
+    <x-breadcrumbs />
+</x-container>
+
+<x-section>
+    <x-container>
+        <x-heading as="h1" size="3xl">{{ title }}</x-heading>
+
+        {{ collection:team as="members" }}
+            {{ if members }}
+                <ul class="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+                    {{ members }}
+                        <li><x-team-member :name="title" :role="role" :image="image" :bio="bio" :email="email" :phone="phone" :linkedin="linkedin" /></li>
+                    {{ /members }}
+                </ul>
+            {{ else }}
+                <p class="mt-8 text-ink-muted">Er zijn nog geen teamleden.</p>
+            {{ /if }}
+        {{ /collection:team }}
+    </x-container>
+</x-section>
+
+{{ partial:page_builder }}
