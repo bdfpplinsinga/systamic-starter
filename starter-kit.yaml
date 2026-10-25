@@ -98,6 +98,16 @@ modules:
       - content/trees/collections/team.yaml
       - resources/blueprints/collections/team
       - resources/views/team
+  menu:
+    prompt: 'Menukaart installeren? (voor horeca: menukaarten met categorieën, gerechten en prijzen op /menukaart)'
+    default: false
+    export_paths:
+      - content/collections/menus.yaml
+      - content/collections/menus
+      - content/collections/pages/menukaart.md
+      - content/trees/collections/menus.yaml
+      - resources/blueprints/collections/menus
+      - resources/views/menus
   demo:
     prompt: 'Demopagina met alle blokken en voorbeeldafbeeldingen installeren?'
     default: false

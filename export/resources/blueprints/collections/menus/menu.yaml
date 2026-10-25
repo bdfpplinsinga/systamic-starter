@@ -1,0 +1,112 @@
+title: Menukaart
+tabs:
+  main:
+    display: Inhoud
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Naam
+              instructions: 'Bijvoorbeeld Lunch, Diner of Dranken. Wordt het tabblad op de menukaartpagina.'
+              localizable: true
+              validate:
+                - required
+          -
+            handle: intro
+            field:
+              type: textarea
+              display: Toelichting
+              instructions: 'Optioneel, bijvoorbeeld "Geserveerd van 12.00 tot 16.00 uur".'
+              localizable: true
+              listable: false
+          -
+            handle: sections
+            field:
+              type: grid
+              display: Categorieën
+              instructions: 'Per categorie (Voorgerechten, Hoofdgerechten, …) een lijst gerechten. Sleep om de volgorde te wijzigen.'
+              mode: stacked
+              add_row: 'Categorie toevoegen'
+              localizable: true
+              listable: false
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Categorie
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: note
+                  field:
+                    type: text
+                    display: Toelichting
+                    instructions: 'Optioneel, bijvoorbeeld "Met brood en boter".'
+                    width: 50
+                -
+                  handle: dishes
+                  field:
+                    type: grid
+                    display: Gerechten
+                    mode: stacked
+                    add_row: 'Gerecht toevoegen'
+                    fields:
+                      -
+                        handle: name
+                        field:
+                          type: text
+                          display: Gerecht
+                          width: 75
+                          validate:
+                            - required
+                      -
+                        handle: price
+                        field:
+                          type: text
+                          display: Prijs
+                          prepend: €
+                          placeholder: '12,50'
+                          width: 25
+                      -
+                        handle: description
+                        field:
+                          type: text
+                          display: Omschrijving
+                          width: 66
+                      -
+                        handle: diet
+                        field:
+                          type: select
+                          display: Dieet
+                          multiple: true
+                          clearable: true
+                          width: 33
+                          options:
+                            vegetarian: Vegetarisch
+                            vegan: Vegan
+                            gluten_free: Glutenvrij
+                            spicy: Pittig
+          -
+            handle: footnote
+            field:
+              type: text
+              display: Voetnoot
+              instructions: 'Optioneel, bijvoorbeeld over allergenen.'
+              localizable: true
+              listable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

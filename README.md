@@ -25,6 +25,7 @@ Tijdens de installatie kies je welke modules je wilt:
 | Vacatures | nee | Collectie `jobs` met overzicht op `/vacatures` en een pagina per vacature: locatie, uren, dienstverband, salaris, sluitingsdatum, sollicitatieknop en JobPosting-data voor Google for Jobs. Vacatures na hun sluitingsdatum verdwijnen van het overzicht. |
 | Diensten | nee | Collectie `services` met overzicht op `/diensten` en een pagina per dienst (icoon of afbeelding, page builder). Volgorde bepaal je met slepen. |
 | Team | nee | Collectie `team` met teamleden (foto, functie, bio, e-mail, telefoon, LinkedIn), overzicht op `/team`. Teamleden hebben geen eigen pagina. |
+| Menukaart | nee | Voor horeca. Collectie `menus` met een entry per kaart (Lunch, Diner, Dranken), elk met categorieën en gerechten (naam, omschrijving, prijs, dieetlabels) in één scherm. Op `/menukaart` wordt elke kaart een tabblad, met Restaurant/Menu-data voor Google. |
 | Demo | nee | Voegt de pagina `/blokken` toe met alle blokken en voorbeeldafbeeldingen. |
 
 Daarna:

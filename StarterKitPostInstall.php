@@ -11,6 +11,7 @@ class StarterKitPostInstall
         'vacatures' => 'Vacatures toegevoegd op /vacatures.',
         'diensten' => 'Diensten toegevoegd op /diensten.',
         'team' => 'Team toegevoegd op /team.',
+        'menukaart' => 'Menukaart toegevoegd op /menukaart.',
         'blokken' => 'Demopagina toegevoegd op /blokken.',
     ];
 

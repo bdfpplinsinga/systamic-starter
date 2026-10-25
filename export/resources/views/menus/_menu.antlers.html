@@ -1,0 +1,41 @@
+{{# Eén menukaart: toelichting, categorieën met gerechten en een voetnoot. #}}
+{{ if intro }}
+    <p class="text-lg text-ink-muted">{{ intro }}</p>
+{{ /if }}
+
+<div class="mt-10 space-y-14">
+    {{ sections }}
+        <section aria-labelledby="{{ id }}">
+            <div class="border-b border-ink/15 pb-3">
+                <x-heading as="h2" size="lg" id="{{ id }}">{{ title }}</x-heading>
+                {{ if note }}<p class="mt-1 text-ink-muted">{{ note }}</p>{{ /if }}
+            </div>
+
+            <ul class="mt-6 grid gap-x-16 gap-y-6 md:grid-cols-2">
+                {{ dishes }}
+                    <li>
+                        <div class="flex items-baseline gap-3">
+                            <h3 class="font-semibold">{{ name }}</h3>
+                            <span class="min-w-4 grow border-b border-dotted border-ink/25" aria-hidden="true"></span>
+                            {{ if price }}
+                                <span class="shrink-0 font-semibold tabular-nums">{{ if price | replace(',', '.') | is_numeric }}€&nbsp;{{ /if }}{{ price }}</span>
+                            {{ /if }}
+                        </div>
+                        {{ if description }}<p class="mt-1 text-ink-muted">{{ description }}</p>{{ /if }}
+                        {{ if diet }}
+                            <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Dieet">
+                                {{ diet }}
+                                    <li class="rounded-full border border-ink/15 px-2.5 py-0.5 text-xs font-medium text-ink-muted">{{ label }}</li>
+                                {{ /diet }}
+                            </ul>
+                        {{ /if }}
+                    </li>
+                {{ /dishes }}
+            </ul>
+        </section>
+    {{ /sections }}
+</div>
+
+{{ if footnote }}
+    <p class="mt-14 text-sm text-ink-muted">{{ footnote }}</p>
+{{ /if }}
