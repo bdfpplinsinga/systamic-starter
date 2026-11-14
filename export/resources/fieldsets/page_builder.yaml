@@ -170,6 +170,15 @@ fields:
                   import: block_logos
                 -
                   import: block_settings
+            downloads:
+              display: 'Downloads'
+              instructions: 'Lijst met bestanden om te downloaden, zoals een brochure of prijslijst.'
+              image: downloads.jpg
+              fields:
+                -
+                  import: block_downloads
+                -
+                  import: block_settings
         dynamic:
           display: 'Formulieren & overzichten'
           sets:

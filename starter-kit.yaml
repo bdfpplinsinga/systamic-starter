@@ -125,4 +125,6 @@ modules:
       - public/assets/demo-logo-2.svg
       - public/assets/demo-logo-3.svg
       - public/assets/demo-logo-4.svg
+      - public/assets/demo-brochure.pdf
+      - public/assets/demo-prijslijst.pdf
       - public/assets/.meta

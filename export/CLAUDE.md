@@ -26,6 +26,7 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
 - `<x-content :block="block" />` renders the `content` group, so blocks never repeat that markup.
 - **Antlers gotchas**:
   - A ternary inside an array literal breaks `tw_merge` (`[a, x ? 'b' : '', class]` drops classes). Assign the ternary to a variable first.
+  - A ternary branch must be a single value: `x ? a + ' MB' : b` fails (ANTLR_023). Build the strings in variables first, then pick one.
   - A modifier binds tighter than `??`: `{{ a ?? b | to_json }}` only encodes `b`. Write `{{ (a ?? b) | to_json }}`.
 - **Globals** (Dutch labels): `company` (Bedrijfsgegevens: name, address, KvK, opening hours), `social` (Social media), `general` (Algemeen: logo, favicon, share image, header buttons, footer text; not `site`, which would shadow Statamic's own `site` variable), `scripts` (tracking code per cookie group). Header, footer, `partials/head_meta` and `partials/structured_data` read them; add new site-wide settings there, not to page blueprints.
 - **Cookies and scripts**: the Cookie Dialog addon (`emplify-software/statamic-cookie-dialog`) shows the consent dialog; its texts live in `content/cookie-dialog`. Third-party code goes in the `scripts` global, never in templates: `partials/scripts` only outputs a script outside the `essential` group inside `{{ cookie:allowed }}`. Google Tag Manager has its own field (`scripts:gtm_id`): `partials/gtm` loads it with Consent Mode v2 (all denied by default; `statistics` grants analytics_storage, `marketing` grants the ad_* signals).

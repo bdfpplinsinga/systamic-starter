@@ -1,0 +1,51 @@
+<x-section :background="block:background" :id="block:anchor">
+    <x-container>
+        <x-content :block="block" />
+
+        {{#
+            De kaarten zijn altijd licht (bg-surface), ook in een gekleurde sectie. Daarom gebruiken ze binnenin primary en ink;
+            alleen de focusrand gebruikt accent, want die valt op de sectie.
+        #}}
+        <ul class="mt-12 grid gap-4 md:grid-cols-2">
+            {{ block:files }}
+                {{ if file }}
+                    {{ label = title ?? file:title }}
+                    {{# Grootte en type op z'n Nederlands: "PDF, 1,2 MB". De standaard size van Statamic gebruikt een punt. #}}
+                    {{# Een ternary-tak mag maar één waarde zijn, dus eerst beide teksten opbouwen. #}}
+                    {{ mb = (file:size_megabytes | format_number(1, ',', '.')) + ' MB' }}
+                    {{ kb = (file:size_kilobytes | format_number(0, ',', '.')) + ' kB' }}
+                    {{ size_label = file:size_bytes >= 1048576 ? mb : kb }}
+                    <li>
+                        <a
+                            href="{{ file:url }}"
+                            download
+                            class="group flex h-full items-start gap-4 rounded-xl border border-ink/10 bg-surface p-5 text-ink transition-colors hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                        >
+                            <span
+                                class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-secondary text-secondary-contrast"
+                            >
+                                <x-icon name="document-text" size="lg" />
+                            </span>
+                            <span class="min-w-0 flex-1">
+                                <span class="block font-semibold wrap-break-word group-hover:underline">
+                                    {{ label }}
+                                </span>
+                                {{ if description }}
+                                    <span class="mt-1 block text-sm text-ink-muted">{{ description }}</span>
+                                {{ /if }}
+                                <span class="mt-2 block text-sm text-ink-muted">
+                                    <span class="sr-only">Download,</span>
+                                    {{ file:extension | upper }}
+                                    <span aria-hidden="true">·</span>
+                                    <span class="sr-only">,</span>
+                                    {{ size_label }}
+                                </span>
+                            </span>
+                            <x-icon name="arrow-down-tray" class="mt-1 text-primary" />
+                        </a>
+                    </li>
+                {{ /if }}
+            {{ /block:files }}
+        </ul>
+    </x-container>
+</x-section>

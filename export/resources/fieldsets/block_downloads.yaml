@@ -1,0 +1,37 @@
+title: 'Blok - Downloads'
+fields:
+  -
+    import: content
+  -
+    handle: files
+    field:
+      type: grid
+      display: Bestanden
+      instructions: 'Bestandstype en grootte worden automatisch getoond.'
+      mode: stacked
+      add_row: 'Bestand toevoegen'
+      localizable: true
+      validate:
+        - required
+      fields:
+        -
+          handle: file
+          field:
+            type: assets
+            display: Bestand
+            container: assets
+            max_files: 1
+            mode: list
+            validate:
+              - required
+        -
+          handle: title
+          field:
+            type: text
+            display: Titel
+            instructions: 'Leeg laten om de titel of bestandsnaam van het bestand te gebruiken.'
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Omschrijving

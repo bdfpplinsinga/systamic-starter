@@ -52,10 +52,11 @@ Add the set to the right group, in the same shape as the other sets:
 ## 4. Demo and preview
 
 - If `content/collections/pages/blokken.md` exists (demo module or dev site), add an example entry to its `page_builder` in the same inline YAML style: a unique `id` such as `b-<handle>`, `type: <handle>`, `enabled: true`, realistic Dutch content, demo images `demo-1.jpg` to `demo-4.jpg`. Alternate `background: muted` with the neighbouring blocks.
-- Preview image: `public/assets/set-previews/<handle>.jpg`, **640 × 216 px** JPEG, a screenshot of the block on `/blokken` (or the page where it is used). If you can't take the screenshot yourself, tell the user it still needs to be made. Statamic writes the `.meta` file itself.
+- Preview image: `public/assets/set-previews/<handle>.jpg`, **640 × 216 px** JPEG, a screenshot of the block on `/blokken` (or the page where it is used). To make it yourself: screenshot the block's `<section>` at a 1280 px wide viewport with Puppeteer (remove `#cookie-dialog` first), crop 1280 × 432 with `sips --cropOffset <y> 0 -c 432 1280`, then `sips -z 216 640` and `sips -s format jpeg`. If you can't, tell the user it still needs to be made. Statamic writes the `.meta` file itself.
 
 ## 5. Check
 
+- Run `npm run build` (or keep `npm run dev` running) before you look at the result: Tailwind only generates the classes of a new view after a build.
 - Open the page with the block, at mobile and desktop widths, in all three backgrounds (`none`, `muted`, `primary`).
 - Edit the block in the control panel: labels are in Dutch, the preview image appears under "Blok toevoegen", block settings stay hidden until the toggle is switched on.
 - Run pa11y on the page (start the site with `php artisan serve` or use the Herd URL):
