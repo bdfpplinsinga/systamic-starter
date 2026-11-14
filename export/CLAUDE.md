@@ -1,6 +1,6 @@
 # Systamic
 
-This project uses the **Systamic** Statamic starter kit. Its source is the development site `bdfpplinsinga/systamic-starter-site`. There you build and test, then run `composer export` (`php please starter-kit:export ../systamic-starter --clear`, then restores `.github` in the kit repo, which `--clear` deletes) to update the kit repo `bdfpplinsinga/systamic-starter`. A GitHub Action in the kit repo tags every push to main with the next patch version. New projects install the kit with `statamic new <name> bdfpplinsinga/systamic-starter`. Kit configuration lives in `package/` (`starter-kit.yaml`, `composer.json`, `StarterKitPostInstall.php`, `README.md`), which only exists in the dev site.
+This project uses the **Systamic** Statamic starter kit (`statamic new <name> bdfpplinsinga/systamic-starter`). The conventions below apply to every Systamic site. Some kit modules are optional: a rule that mentions news, jobs, services, team, menu or the `/blokken` demo page only applies when that module is installed (check whether its files exist).
 
 Stack: Statamic 6, Laravel 13, Antlers, Tailwind 4 (Vite), Alpine.js (with the collapse and focus plugins), `marcorieser/tailwind-merge-statamic`.
 
@@ -20,7 +20,7 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
   1. **Fields**, one responsibility each: `heading` (heading + heading_level, default h2), `text`, `image`, `images`, `button`, `buttons`, `video`.
   2. **Groups**: `content` (eyebrow, heading, text, buttons) and `block_settings` (background, anchor).
   3. **Blocks**: `block_*.yaml`, made of fields and groups only.
-- **Page builder**: `page_builder.yaml` is a replicator. Each set has a preview image (`image: <set>.jpg`, from `public/assets/set-previews`, see `set_preview_images` in `config/statamic/assets.php`); a new block gets a screenshot there too. In `block_settings`, a revealer toggle (`show_settings`, not saved) shows background and anchor only on demand. Each set imports `block_<name>` plus `block_settings`, so block fieldsets stay free of settings and can be reused elsewhere. `partials/page_builder` renders each set through `resources/views/blocks/{type}.antlers.html` with `scope="block"`, and block views read everything from `block:*`. A new block means a `block_<name>.yaml`, a set in `page_builder.yaml`, a view in `blocks/` and an example on the `/blokken` page.
+- **Page builder**: `page_builder.yaml` is a replicator. Each set has a preview image (`image: <set>.jpg`, from `public/assets/set-previews`, see `set_preview_images` in `config/statamic/assets.php`); a new block gets a screenshot there too. In `block_settings`, a revealer toggle (`show_settings`, not saved) shows background and anchor only on demand. Each set imports `block_<name>` plus `block_settings`, so block fieldsets stay free of settings and can be reused elsewhere. `partials/page_builder` renders each set through `resources/views/blocks/{type}.antlers.html` with `scope="block"`, and block views read everything from `block:*`. A new block means a `block_<name>.yaml`, a set in `page_builder.yaml`, a view in `blocks/` and, when the demo page exists, an example on `/blokken` (use the `nieuw-blok` skill).
 - **Spacing is set by the design, not the editor.** Every block view wraps itself in `<x-section :background="block:background" :id="block:anchor">`. Only the developer picks `spacing` (the hero uses `lg`).
 - **Heading level vs size**: the editor picks the semantic level (`heading_level`). The block view picks the visual size (`<x-heading :as="block:heading_level" size="xl">`).
 - `<x-content :block="block" />` renders the `content` group, so blocks never repeat that markup.
@@ -45,5 +45,23 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
 - **Slider**: `<x-slider label="…" per_view="3">` with `<x-slide>` children. Swiper (with A11y, Keyboard, Navigation, Pagination) is loaded on demand from `resources/js/slider.js`, only on pages that have a slider. The gallery block has a `layout` option (grid or slider).
 - **Dashboard**: widget `images_missing_alt` (`app/Widgets/ImagesMissingAlt.php`, Blade view in `resources/views/widgets`) lists images without alt text; configured in `config/statamic/cp.php` (`container`, `limit`, `exclude` folders, default `set-previews`).
 - `/styleguide` (local env only) shows every component. Add a new component there too.
-- **Quality**: `.prettierrc` (Antlers + Tailwind plugins; `npm run format` covers JS and CSS). The dev site runs pa11y (axe, WCAG 2 AA) on the URLs in `.pa11yci.json` in a GitHub Action; keep it green.
+- **Quality**: `.prettierrc` (Antlers + Tailwind plugins; `npm run format` covers JS and CSS). New front-end work must pass WCAG 2 AA (pa11y with the axe runner).
 - Labels in the control panel and front end are in Dutch.
+
+## Skills
+
+Use the project skills in `.claude/skills` for recurring work, so every site is built the same way:
+
+- `nieuw-blok`: a new page builder block (fieldset, set, preview image, view, demo).
+- `nieuw-component`: a new Antlers component (props comment, `tw_merge`, styleguide).
+- `nieuwe-module`: a new collection with overview page and detail views, built like news and jobs.
+- `nieuw-project`: set up a freshly installed Systamic site for a client.
+- `kit-export` (dev site only): update the kit repo from the dev site.
+
+## Dev site only
+
+These parts exist only in `bdfpplinsinga/systamic-starter-site`, the development site of the kit:
+
+- Kit configuration lives in `package/` (`starter-kit.yaml`, `composer.json`, `StarterKitPostInstall.php`, `README.md`). Everything in `export_paths` (and per module in `modules.*.export_paths`) goes to new projects.
+- `composer export` runs `php please starter-kit:export ../systamic-starter --clear` and restores `.github` in the kit repo, which `--clear` deletes. A GitHub Action in the kit repo tags every push to main with the next patch version. Use the `kit-export` skill.
+- A GitHub Action runs pa11y-ci (axe, WCAG 2 AA) on the URLs in `.pa11yci.json`; keep it green and add new pages and module URLs there.

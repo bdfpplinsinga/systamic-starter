@@ -1,4 +1,8 @@
 export_paths:
+  - .claude/skills/nieuw-blok
+  - .claude/skills/nieuw-component
+  - .claude/skills/nieuw-project
+  - .claude/skills/nieuwe-module
   - .prettierrc
   - CLAUDE.md
   - app/Providers/AppServiceProvider.php

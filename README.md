@@ -56,7 +56,7 @@ Vul in het control panel de globals in (Bedrijfsgegevens, Social media, Algemeen
 - **Dashboardwidget** "Afbeeldingen zonder alt-tekst": toont welke afbeeldingen nog een alt-tekst missen, met een link naar de editor.
 - **`/styleguide`** (alleen lokaal) met alle componenten.
 
-De conventies staan in `CLAUDE.md`.
+De conventies staan in `CLAUDE.md`. In `.claude/skills` staan skills voor Claude Code, zodat elk project op dezelfde manier wordt gebouwd: `nieuw-project` (de site inrichten voor een klant, plus een go-live-checklist), `nieuw-blok`, `nieuw-component` en `nieuwe-module`.
 
 ## Kit bijwerken (voor beheerders)
 
