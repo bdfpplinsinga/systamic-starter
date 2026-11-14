@@ -51,6 +51,6 @@ Add a section to `resources/views/styleguide.antlers.html` (`/styleguide`, local
 - Open `/styleguide` and check every variant at mobile and desktop widths.
 - Check that a `class` passed from outside overrides the base classes.
 - Use a keyboard: tab order, focus visible, Escape/Enter where relevant.
-- `npx --yes pa11y@8 --runner axe --standard WCAG2AA <site-url>/styleguide`
+- `npx --yes pa11y@10 --runner axe --standard WCAG2AA <site-url>/styleguide`
 - `npx prettier --write resources/views/components/<name>.antlers.html`
 - Dev site: add the component to the list in `package/README.md` ("Componenten").

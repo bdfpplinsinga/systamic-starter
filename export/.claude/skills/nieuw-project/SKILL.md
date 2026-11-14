@@ -41,7 +41,7 @@ Follow the conventions in `CLAUDE.md`. Work through the steps in order. Ask for 
 ## 6. Forms and mail
 
 - `MAIL_*` in `.env` (production values go on the server, never in git). The contact form e-mails the address from Bedrijfsgegevens.
-- Test sending, including validation messages (`lang/nl/validation.php`) and the honeypot.
+- Test sending, including validation messages (`lang/nl/validation.php`) and the honeypot. A filled honeypot still shows the thank-you message but stores and sends nothing; that is intended. With `MAIL_MAILER=log` the mail ends up in `storage/logs/laravel.log`.
 
 ## 7. SEO
 
@@ -58,7 +58,7 @@ Go through this list and report per item: OK, open, or for the user to do.
 - [ ] `npm run build` has been run; the server serves `public/build`.
 - [ ] `php please search:update --all` and `php please stache:warm` in the deploy script.
 - [ ] Every image has an alt text (dashboard widget "Afbeeldingen zonder alt-tekst").
-- [ ] pa11y on home, contact and each module overview: `npx --yes pa11y@8 --runner axe --standard WCAG2AA <url>`.
+- [ ] pa11y on home, contact and each module overview: `npx --yes pa11y@10 --runner axe --standard WCAG2AA <url>`.
 - [ ] Favicon, share image and logo are shown correctly (check og:image with a link preview).
 - [ ] Contact form tested on the production mail setup.
 - [ ] Cookie dialog: tracking only loads after consent (check the network tab).

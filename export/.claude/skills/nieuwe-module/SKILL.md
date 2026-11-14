@@ -46,6 +46,6 @@ When `package/starter-kit.yaml` exists:
 ## Check
 
 - Overview and detail pages at mobile and desktop widths, empty state included.
-- `npx --yes pa11y@8 --runner axe --standard WCAG2AA <url>` on the overview and a detail page.
+- `npx --yes pa11y@10 --runner axe --standard WCAG2AA <url>` on the overview and a detail page.
 - Structured data: check it with the Rich Results Test or schema.org validator (ask the user, it needs a public URL).
 - `npx prettier --write resources/views/<handle>`

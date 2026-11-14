@@ -45,7 +45,7 @@ Statamic docs (6.x) are public at github.com/statamic/docs (`content/collections
 - **Slider**: `<x-slider label="…" per_view="3">` with `<x-slide>` children. Swiper (with A11y, Keyboard, Navigation, Pagination) is loaded on demand from `resources/js/slider.js`, only on pages that have a slider. The gallery block has a `layout` option (grid or slider).
 - **Dashboard**: widget `images_missing_alt` (`app/Widgets/ImagesMissingAlt.php`, Blade view in `resources/views/widgets`) lists images without alt text; configured in `config/statamic/cp.php` (`container`, `limit`, `exclude` folders, default `set-previews`).
 - `/styleguide` (local env only) shows every component. Add a new component there too.
-- **Quality**: `.prettierrc` (Antlers + Tailwind plugins; `npm run format` covers JS and CSS). New front-end work must pass WCAG 2 AA (pa11y with the axe runner).
+- **Quality**: `.prettierrc` (Antlers + Tailwind plugins; `npm run format` covers JS and CSS). New front-end work must pass WCAG 2 AA: `npx --yes pa11y@10 --runner axe --standard WCAG2AA <url>`. Use pa11y 10 or newer; pa11y 8 (axe 4.8) reports a false contrast error on empty form fields. If Puppeteer can't find Chrome, set `PUPPETEER_EXECUTABLE_PATH` (macOS: `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`).
 - Labels in the control panel and front end are in Dutch.
 
 ## Skills

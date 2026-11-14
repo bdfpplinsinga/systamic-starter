@@ -59,7 +59,7 @@ Add the set to the right group, in the same shape as the other sets:
 - Open the page with the block, at mobile and desktop widths, in all three backgrounds (`none`, `muted`, `primary`).
 - Edit the block in the control panel: labels are in Dutch, the preview image appears under "Blok toevoegen", block settings stay hidden until the toggle is switched on.
 - Run pa11y on the page (start the site with `php artisan serve` or use the Herd URL):
-  `npx --yes pa11y@8 --runner axe --standard WCAG2AA <url>`. In the dev site, `npx --yes pa11y-ci@5 --config .pa11yci.json` against `php artisan serve --port=8000` runs the full set.
+  `npx --yes pa11y@10 --runner axe --standard WCAG2AA <url>`. In the dev site, `npx --yes pa11y-ci@5 --config .pa11yci.json` against `php artisan serve --port=8000` runs the full set.
 - Format the view with Prettier: `npx prettier --write resources/views/blocks/<handle>.antlers.html`.
 - If the block adds front-end text that should be searchable, check that `App\Search\PageBuilderText` picks it up, then run `php please search:update --all`.
 - Dev site: add the block to the list in `package/README.md` (it names every block).
