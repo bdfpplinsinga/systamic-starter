@@ -5,6 +5,7 @@ export_paths:
   - .claude/skills/nieuwe-module
   - .prettierrc
   - CLAUDE.md
+  - docs/mail.md
   - app/Providers/AppServiceProvider.php
   - app/Search
   - app/Widgets
@@ -50,6 +51,7 @@ export_paths:
   - resources/views/styleguide.antlers.html
   - resources/views/widgets
   - routes/web.php
+  - tests/Feature/FormEmailTest.php
   - package.json
   - vite.config.js
 dependencies:

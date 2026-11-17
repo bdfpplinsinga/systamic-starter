@@ -6,7 +6,7 @@
                 <th align="left" valign="top">{{ display }}</th>
                 <td>
                     {{ if fieldtype == 'toggle' }}Ja
-                    {{ elseif value | is_array }}{{ value | join(', ') }}
+                    {{ elseif value | is_array }}{{ value }}{{ label ?? value }}{{ unless last }}, {{ /unless }}{{ /value }}
                     {{ else }}{{ value | nl2br }}{{ /if }}
                 </td>
             </tr>

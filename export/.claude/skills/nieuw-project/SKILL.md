@@ -40,7 +40,8 @@ Follow the conventions in `CLAUDE.md`. Work through the steps in order. Ask for 
 
 ## 6. Forms and mail
 
-- `MAIL_*` in `.env` (production values go on the server, never in git). The contact form e-mails the address from Bedrijfsgegevens.
+- `MAIL_*` in `.env` (production values go on the server, never in git). The contact form e-mails the address from Bedrijfsgegevens. Sending goes through the shared Mailgun account (`mg.burotoast.nl`, one SMTP user per site): follow `docs/mail.md`.
+- New form fields: never use the handle of a global (`company`, `social`, `general`, `scripts`), or the mail loses its recipient. Run `php artisan test` (`FormEmailTest`) after adding a form.
 - Test sending, including validation messages (`lang/nl/validation.php`) and the honeypot. A filled honeypot still shows the thank-you message but stores and sends nothing; that is intended. With `MAIL_MAILER=log` the mail ends up in `storage/logs/laravel.log`.
 
 ## 7. SEO
