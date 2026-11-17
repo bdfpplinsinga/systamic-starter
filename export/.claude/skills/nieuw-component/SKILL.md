@@ -1,6 +1,6 @@
 ---
 name: nieuw-component
-description: Add a new Antlers component (<x-name>) to a Systamic site, with documented props, tw_merge classes, pass-through attributes and a styleguide example. Use when the user asks for a new component, a reusable UI element, or "maak een component voor ...".
+description: Add a new Antlers component (x-name tag) to a Systamic site, with documented props, tw_merge classes, pass-through attributes and a styleguide example. Use when the user asks for a new component, a reusable UI element, or "maak een component voor ...".
 ---
 
 # New component

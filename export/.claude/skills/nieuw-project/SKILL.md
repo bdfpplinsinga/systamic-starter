@@ -1,11 +1,23 @@
 ---
 name: nieuw-project
-description: Set up a freshly installed Systamic site for a client project (brand tokens, fonts, logo and favicon, globals, menus, legal pages, forms and mail, SEO, cookies and tracking, go-live checks). Use right after "statamic new ... bdfpplinsinga/systamic-starter", or when the user says "nieuw project", "zet de site op voor <klant>" or asks for a go-live check.
+description: Set up a freshly installed Systamic site for a client project (brand tokens, fonts, logo and favicon, globals, menus, legal pages, forms and mail, SEO, cookies and tracking, go-live checks), from a brief.md if there is one. Use right after "statamic new ... bdfpplinsinga/systamic-starter", or when the user says "nieuw project", "zet de site op voor een klant" or asks for a go-live check.
 ---
 
 # Set up a new Systamic project
 
 Follow the conventions in `CLAUDE.md`. Work through the steps in order. Ask for the client's details (name, brand colours, font, logo, contact details, socials) at the start, and list what is still missing at the end. Never make up company details, KvK numbers or legal text.
+
+## 0. Brief
+
+If `brief.md` exists in the project root (made with the `systamic-kickoff` skill in Claude Chat), it is the source for this setup. Read its YAML front matter and the reasoning below it first, and don't ask again for what it already answers. Per step:
+
+- **Step 2**: `design.tokens` become the `@theme` tokens (`accent: primary` means `var(--color-primary)`), `design.fonts` the Fontsource packages and `--font-sans`/`--font-heading`. Still run the contrast check. Apply `design.custom_styling` only after confirming each item with the user, in the components' base classes, and update `/styleguide`.
+- **Step 3**: `globals.<handle>` go into `content/globals/default/<handle>.yaml` with the same field handles. Grid rows need an `id` (any unique string). Skip values that are `TODO`.
+- **Step 4**: build `pages` as entries in `content/collections/pages/<slug>.md` (`home` already exists; replace its page builder). Each block becomes a page builder set: `id` (unique), `type`, `enabled: true`, then the block's fields. Convert plain text in bard fields (`text`, `answer`) to bard nodes (`paragraph` with a `text` node; blank lines separate paragraphs), see `home.md` for the shape. Asset fields marked `TODO` stay empty. Add new pages to `content/trees/collections/pages.yaml` and to the menus in `menus`. `meta_description` goes into the entry's `meta_description` field, and with SEO Pro installed also into `seo: { description: ... }`.
+- **New blocks**: build each item in `new_blocks` with the `nieuw-blok` skill before the pages that use it.
+- **Open points**: `open_points` plus everything you skipped (TODO values, empty images) go into the final list of step 8. Keep `brief.md` in the project; it documents the choices.
+
+Check the result in the browser (home and every page from the brief) and run pa11y on them before you move on to step 5.
 
 ## 1. Check the installation
 
